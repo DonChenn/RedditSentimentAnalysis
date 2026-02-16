@@ -1,0 +1,28 @@
+# Data Manipulation and Utilities
+pandas
+numpy
+scikit-learn
+requests
+
+# Natural Language Processing (NLP)
+nltk
+vaderSentiment
+
+# Deep Learning and Transformers
+torch
+torchvision
+torchaudio
+transformers
+accelerate>=1.1.0
+datasets
+
+# Topic Modeling
+bertopic
+gensim
+
+# Visualization
+matplotlib
+seaborn
+
+# Data Acquisition
+kagglehub
