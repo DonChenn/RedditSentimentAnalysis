@@ -37,7 +37,6 @@ def fetch_posts(subreddit, limit=100):
         current_batch = data['data']['children']
         for post in current_batch:
             p_data = post['data']
-            # FILTER: Only take posts with enough discussion
             if p_data.get('num_comments', 0) >= min_comments:
                 posts.append({
                     'post_id': p_data['id'],
