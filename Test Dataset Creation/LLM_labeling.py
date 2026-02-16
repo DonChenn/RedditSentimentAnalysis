@@ -1,14 +1,14 @@
+import google.generativeai as genai
 import pandas as pd
-from google import genai
-from google.genai import errors
 import time
 import os
+from tqdm import tqdm
 
-# 1. Initialize the Gemini Client
-client = genai.Client(api_key="AIzaSyAKEN5HCbfrgI6YYcH9rxA_aTweUiulUpw")
+API_KEY = "AIzaSyCigsHNqGqJK_2JiONF22vIIlXCOvTnCGo"
+INPUT_FILE = 'raw_reddit_comments.csv'
+OUTPUT_FILE = 'labeled_reddit_comments.csv'
 MODEL_NAME = 'gemini-2.5-flash'
 
-# The 28 GoEmotions labels
 EMOTIONS = [
     "admiration", "amusement", "approval", "caring", "desire", "excitement", 
     "gratitude", "joy", "love", "optimism", "pride", "relief", "anger", 
@@ -17,88 +17,99 @@ EMOTIONS = [
     "realization", "surprise", "curiosity", "confusion"
 ]
 
-def classify_comment_with_retry(comment_text, retries=3):
-    """Classifies a comment with error handling and retry logic."""
+def setup_model():
+    genai.configure(api_key=API_KEY)
+    
+    generation_config = {
+        "temperature": 0.2,
+        "top_p": 0.95,
+        "top_k": 64,
+        "max_output_tokens": 1024,
+        "response_mime_type": "application/json",
+    }
+    
+    model = genai.GenerativeModel(
+        model_name=MODEL_NAME,
+        generation_config=generation_config,
+        system_instruction=(
+            "You are an expert data annotator. Your task is to analyze Reddit comments "
+            "for sentiment and political topic. You will be given a Post Title and a Comment Body. "
+            f"You must select exactly one emotion from this list: {', '.join(EMOTIONS)}. "
+            "You must also identify the primary specific political topic (e.g., 'Immigration', 'NATO', 'Healthcare')."
+        )
+    )
+    return model
+
+def analyze_comment(model, title, body):
     prompt = f"""
-    Analyze the following Reddit comment and provide:
-    1. One emotion from this list: {EMOTIONS}
-    2. A short political topic label (1-3 words).
-    Format the response strictly as: Emotion | Topic
-    Comment: "{comment_text}"
+    Please analyze the following Reddit comment:
+    
+    **Post Title:** {title}
+    **Comment Body:** {body}
+    
+    Return a JSON object with these two keys:
+    1. "emotion": The single most appropriate label from the GoEmotions list.
+    2. "topic": A concise political topic string (1-3 words).
     """
     
-    for i in range(retries):
-        try:
-            response = client.models.generate_content(
-                model=MODEL_NAME, 
-                contents=prompt
-            )
-            
-            if response.text:
-                parts = response.text.strip().split('|')
-                emotion = parts[0].strip().lower()
-                topic = parts[1].strip() if len(parts) > 1 else "Unknown"
-                
-                # Validation
-                if emotion not in EMOTIONS:
-                    emotion = "neutral"
-                return emotion, topic
-            return "neutral", "Unknown"
-            
-        except errors.APIError as e:
-            if "429" in str(e):
-                wait_time = 30 
-                print(f"Rate limit hit. Waiting {wait_time}s...")
-                time.sleep(wait_time)
-            else:
-                print(f"API Error: {e}")
-                return "error", "error"
-    return "timeout", "timeout"
+    try:
+        response = model.generate_content(prompt)
+        import json
+        result = json.loads(response.text)
+        return result.get("emotion"), result.get("topic")
+    except Exception as e:
+        print(f"Error processing row: {e}")
+        return None, None
 
 def main():
-    # Connection Test
-    print(f"Verifying connection to {MODEL_NAME}...")
-    try:
-        test = client.models.generate_content(model=MODEL_NAME, contents="hi")
-        print(f"Connection Successful! Response: {test.text.strip()}")
-    except Exception as e:
-        print(f"CRITICAL ERROR: Could not connect to {MODEL_NAME}. Check your API Key and Quota. \nDetail: {e}")
+    # 1. Load Data
+    if not os.path.exists(INPUT_FILE):
+        print(f"Error: {INPUT_FILE} not found.")
         return
 
-    input_file = 'raw_reddit_comments.csv'
-    output_file = 'labeled_reddit_comments.csv'
-    
-    # Load data or resume progress
-    if os.path.exists(output_file):
-        df = pd.read_csv(output_file)
-        print(f"Resuming progress from {output_file}...")
+    df = pd.read_csv(INPUT_FILE)
+    print(f"Loaded {len(df)} rows from {INPUT_FILE}")
+
+    # 2. Setup output dataframe (resume if file exists)
+    if os.path.exists(OUTPUT_FILE):
+        print(f"Resuming from {OUTPUT_FILE}...")
+        results_df = pd.read_csv(OUTPUT_FILE)
+        processed_indices = set(results_df.index)
     else:
-        df = pd.read_csv(input_file)
-        df['sentiment'] = None
-        df['topic'] = None
+        results_df = df.copy()
+        results_df['predicted_emotion'] = None
+        results_df['predicted_topic'] = None
+        processed_indices = set()
 
-    remaining_indices = df[df['sentiment'].isna()].index
-    print(f"Processing {len(remaining_indices)} remaining comments...")
+    # 3. Initialize Model
+    model = setup_model()
 
-    for count, index in enumerate(remaining_indices):
-        comment = df.at[index, 'comment_body']
+    # 4. Iterate and Label
+    for index, row in tqdm(results_df.iterrows(), total=len(results_df)):
+        if index in processed_indices and pd.notna(results_df.at[index, 'predicted_emotion']):
+            continue
+
+        title = row['post_title']
+        body = row['comment_body']
         
-        emotion, topic = classify_comment_with_retry(comment)
+        # Skip empty comments
+        if pd.isna(body) or str(body).strip() == "":
+            continue
+
+        emotion, topic = analyze_comment(model, title, body)
         
-        df.at[index, 'sentiment'] = emotion
-        df.at[index, 'topic'] = topic
+        results_df.at[index, 'predicted_emotion'] = emotion
+        results_df.at[index, 'predicted_topic'] = topic
+
+        time.sleep(0.1) 
         
-        # Periodic save (checkpoint)
-        if (count + 1) % 10 == 0:
-            df.to_csv(output_file, index=False)
-            print(f"Processed {count + 1} comments. Checkpoint saved.")
-        
-        # Pacing to stay under Free Tier RPM
-        time.sleep(4)
+        # Save every 10 rows to prevent data loss
+        if index % 10 == 0:
+            results_df.to_csv(OUTPUT_FILE, index=False)
 
     # Final save
-    df.to_csv(output_file, index=False)
-    print(f"Success! All comments processed and saved to {output_file}")
+    results_df.to_csv(OUTPUT_FILE, index=False)
+    print(f"Done! Results saved to {OUTPUT_FILE}")
 
 if __name__ == "__main__":
     main()

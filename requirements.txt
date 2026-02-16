@@ -23,7 +23,8 @@ gensim
 # Visualization
 matplotlib
 seaborn
+tqdm
 
 # Data Acquisition
 kagglehub
-google-genai
+google-genai>=0.1.0
