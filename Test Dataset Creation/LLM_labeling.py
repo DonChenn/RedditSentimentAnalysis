@@ -3,8 +3,12 @@ import pandas as pd
 import time
 import os
 from tqdm import tqdm
+from dotenv import load_dotenv
 
-API_KEY = "AIzaSyCigsHNqGqJK_2JiONF22vIIlXCOvTnCGo"
+load_dotenv()
+
+API_KEY = os.getenv("API_KEY")
+
 INPUT_FILE = 'raw_reddit_comments.csv'
 OUTPUT_FILE = 'labeled_reddit_comments.csv'
 MODEL_NAME = 'gemini-2.5-flash'

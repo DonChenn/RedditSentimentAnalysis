@@ -28,3 +28,4 @@ tqdm
 # Data Acquisition
 kagglehub
 google-genai>=0.1.0
+dotenv
