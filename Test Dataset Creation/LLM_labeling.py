@@ -6,7 +6,6 @@ from tqdm import tqdm
 from dotenv import load_dotenv
 
 load_dotenv()
-
 API_KEY = os.getenv("API_KEY")
 
 INPUT_FILE = 'raw_reddit_comments.csv'
@@ -53,7 +52,7 @@ def analyze_comment(model, title, body):
     
     Return a JSON object with these two keys:
     1. "emotion": The single most appropriate label from the GoEmotions list.
-    2. "topic": A concise political topic string (1-3 words).
+    2. "topic": A concise political topic string (1 word only).
     """
     
     try:
