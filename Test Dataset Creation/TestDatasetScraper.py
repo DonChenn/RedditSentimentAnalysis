@@ -75,10 +75,10 @@ if __name__ == "__main__":
     
     # Process Liberal and Conservative subreddits
     for sub in ["Liberal", "Conservative"]:
-        posts = fetch_posts(sub, limit=100)
+        posts = fetch_posts(sub, limit=200)
         for i, post in enumerate(posts):
             if i % 10 == 0: print(f"Scraping comments for {sub} post {i}...")
-            all_comments.extend(fetch_comments_for_post(post, limit=10))
+            all_comments.extend(fetch_comments_for_post(post, limit=5))
             time.sleep(1.5) # Be polite to avoid 429s
     
     # Save to a single file
