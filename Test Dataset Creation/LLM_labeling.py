@@ -83,7 +83,7 @@ def setup_model():
     genai.configure(api_key=API_KEY)
 
     class AnnotationResponse(typing_extensions.TypedDict):
-        emotion: str
+        emotions: list[str]
         topic_index: int
 
     generation_config = {
@@ -108,12 +108,14 @@ You are an expert data annotator.
 
 TASK:
 Analyze Reddit comments and assign:
-1) Exactly ONE emotion
+1) Between 1 and 3 emotions
 2) Exactly ONE topic index
 
 EMOTION RULES:
-- Choose exactly one emotion from: {', '.join(EMOTIONS)}
-- If unsure, choose "neutral"
+- Choose between 1 and 3 emotions from the list.
+- Only select multiple if the comment strongly expresses mixed feelings.
+- If unsure, choose ["neutral"].
+- Return them as a list of strings.
 
 TOPIC SELECTION RULES:
 - You MUST consider ALL topic indices before choosing.
