@@ -8,6 +8,7 @@ from dotenv import load_dotenv
 import json
 import uuid
 import re
+import typing_extensions
 
 load_dotenv()
 API_KEY = os.getenv("API_KEY")
@@ -25,67 +26,72 @@ EMOTIONS = [
     "realization", "surprise", "curiosity", "confusion"
 ]
 
-TOPICS_LIST = [
-    ['market', 'money', 'capitalist', 'libertarian'],
-    ['ukraine', 'crisis', 'ukraine crisis', 'invasion'],
-    ['capitalism', 'anarcho', 'anarcho capitalism', 'resources'],
-    ['https', 'com', 'www', 'https www'],
-    ['house', 'white house', 'senate', 'congress'],
-    ['white', 'white house', 'white supremacy', 'supremacy'],
-    ['court', 'supreme court', 'supreme', 'justice'],
-    ['new', 'new york', 'york', 'new poll'],
-    ['war', 'war ukraine', 'class war', 'civil war'],
-    ['socialism', 'democratic', 'democratic socialism', 'love'],
-    ['putin', 'putin invasion', 'vladimir putin', 'claims'],
-    ['communist', 'nepal', 'manifesto', 'communist manifesto'],
-    ['workers', 'strike', 'starbucks', 'starbucks workers'],
-    ['poll', 'com poll', 'view poll', 'poll https'],
-    ['china', 'chinese', 'taiwan', 'africa'],
-    ['news', 'fox', 'fox news', 'host'],
-    ['don', 'don care', 'care', 'love'],
-    ['democracy', 'social democracy', 'fight', 'economic'],
-    ['russia', 'russia ukraine', 'sanctions', 'nato'],
-    ['covid', 'vaccine', 'covid vaccine', 'cuba'],
-    ['png', 'preview', 'width format', 'auto webp'],
-    ['wage', 'minimum', 'minimum wage', 'inflation'],
-    ['history', 'black', 'black history', 'black lives'],
-    ['freedom', 'convoy', 'freedom convoy', 'speech'],
-    ['russian', 'invasion', 'ukrainian', 'russian invasion'],
-    ['socialist', 'democratic', 'democratic socialist', 'socialists'],
-    ['musk', 'elon', 'elon musk', 'tesla'],
-    ['anti', 'anti war', 'pro', 'anti imperialist'],
-    ['police', 'officer', 'killed', 'police officer'],
-    ['florida', 'gov', 'florida gov', 'governor'],
-    ['class', 'working', 'working class', 'struggle'],
-    ['climate', 'change', 'climate change', 'crisis'],
-    ['union', 'soviet', 'soviet union', 'union address'],
-    ['tax', 'rich', 'income', 'wealth'],
-    ['texas', 'abortion', 'law', 'texas abortion'],
-    ['rights', 'senate', 'civil', 'civil rights'],
-    ['social', 'democratic', 'social democracy', 'social democratic'],
-    ['race', 'theory', 'critical', 'race theory'],
-    ['work', 'sex', 'life', 'future'],
-    ['real', 'real estate', 'estate', 'isn'],
-    ['stop', 'talking', 'cnn', 'socialists'],
-    ['economy', 'economic', 'run', 'prices'],
-    ['trudeau', 'act', 'canada', 'emergency'],
-    ['feminist', 'radical', 'radical feminist', 'gender'],
-    ['communism', 'marxist', 'kids', 'power'],
-    ['jan', 'committee', 'capitol', 'jan committee'],
-    ['let', 'brandon', 'congress', 'defense'],
-    ['media', 'social media', 'kyle', 'app'],
-    ['feminism', 'radical', 'sex', 'radical feminism'],
-    ['americans', 'economically', 'millions', 'majority']
-]
+TOPICS_LIST = {
+    0: "Noise/Filler",
+    1: "Mueller Investigation Findings",
+    2: "URLs & Web Metadata",
+    3: "Bill Barr Perjury Allegations",
+    4: "Life & Big Questions",
+    5: "Senate Hearing Debates",
+    6: "Mueller Report Release & Redactions",
+    7: "Russia-Ukraine Invasion & NATO",
+    8: "Special Counsel Public Context",
+    9: "House Oversight & Subpoenas",
+    10: "Fighting for Accountability",
+    11: "Fox, CNN & Media Bias",
+    12: "Congress vs. The Law",
+    13: "Political Talking Points & Emails",
+    14: "How Politics Works",
+    15: "Capitalism vs. Socialism Debate",
+    16: "Reddit Community Feedback",
+    17: "NY Politics & Green New Deal",
+    18: "Senate Majority & McConnell",
+    19: "Identity Politics & Extremism",
+    20: "Leaked Letters & Documents",
+    21: "Arguing over Definitions",
+    22: "Socialism & Welfare",
+    23: "War & Anti-War Views",
+    24: "DOJ Charges & Statements",
+    25: "Impeachment Trial",
+    26: "Health Care & Insurance",
+    27: "Campaign Finance & Economic Costs",
+    28: "Primary Elections & Voter Base",
+    29: "Jobs & Fair Pay",
+    30: "Power & Influences",
+    31: "Russia Sanctions & Collusion",
+    32: "Political Skepticism",
+    33: "Strong Public Reactions",
+    34: "Critique of News Coverage",
+    35: "Supreme Court & Judges",
+    36: "Barr's Report Summary",
+    37: "Race & Civil Rights History",
+    38: "Approval Ratings & Polls",
+    39: "Progressive & Socialist Sentiment",
+    40: "Rating the Attorney General",
+    41: "Taxes & The Wealthy",
+    42: "Violence & Extremism",
+    43: "Law Enforcement & Abortion Rights",
+    44: "Calls for Resignation & Action",
+    45: "Legal Rights & Lying",
+    46: "Unions & Strikes",
+    47: "Obstruction & Collusion",
+    48: "Lying Under Oath",
+    49: "China & Communism"
+}
 
 def setup_model():
     genai.configure(api_key=API_KEY)
+
+    class AnnotationResponse(typing_extensions.TypedDict):
+        emotion: str
+        topic_index: int
 
     generation_config = {
         "temperature": 0.05,
         "top_p": 0.9,
         "max_output_tokens": 512,
-        "response_mime_type": "application/json"
+        "response_mime_type": "application/json",
+        "response_schema": AnnotationResponse
     }
 
     safety_settings = {
@@ -95,9 +101,7 @@ def setup_model():
         HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT: HarmBlockThreshold.BLOCK_NONE,
     }
 
-    formatted_topics = "\n".join(
-        [f"Index {i}: {', '.join(t)}" for i, t in enumerate(TOPICS_LIST)]
-    )
+    formatted_topics = "\n".join([f"Index {k}: {v}" for k, v in TOPICS_LIST.items()])
 
     system_instruction = f"""
 You are an expert data annotator.
@@ -120,7 +124,7 @@ TOPIC SELECTION RULES:
   3 = dominant
 - Choose the topic with the highest score.
 - If there is a tie, choose the LOWER index.
-- If no topic scores 2 or higher, choose Index 0.
+- If no topic scores 1 or higher, choose Index 0.
 - Overlapping topics are expected.
 - Relevance is based on the comment’s MAIN CLAIM, not keyword frequency.
 - Ignore incidental or passing mentions.
@@ -154,8 +158,9 @@ def validate_output(emotion, topic_idx):
     except (ValueError, TypeError):
         topic_idx = 0
 
-    if topic_idx < 0 or topic_idx >= len(TOPICS_LIST):
+    if topic_idx not in TOPICS_LIST:
         topic_idx = 0
+    
 
     return emotion, topic_idx
 
