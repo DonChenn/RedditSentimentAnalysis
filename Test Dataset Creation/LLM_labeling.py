@@ -14,7 +14,7 @@ load_dotenv()
 API_KEY = os.getenv("API_KEY")
 
 INPUT_FILE = 'Test Dataset Creation/raw_reddit_comments.csv'
-OUTPUT_FILE = 'Test Dataset Creation/TD_IF_labeled_reddit_comments.csv'
+OUTPUT_FILE = 'Test Dataset Creation/final_labeled_reddit_comments.csv'
 
 MODEL_NAME = 'gemini-2.0-flash'
 
@@ -137,7 +137,7 @@ TOPIC LIST:
 OUTPUT FORMAT:
 Return ONLY valid JSON:
 {{
-  "emotion": "<string>",
+  "emotions": ["<string>"],
   "topic_index": <integer>
 }}
 
@@ -151,9 +151,11 @@ Do NOT include explanations or scores.
         system_instruction=system_instruction
     )
 
-def validate_output(emotion, topic_idx):
-    if emotion not in EMOTIONS:
-        emotion = "neutral"
+def validate_output(emotions_input, topic_idx):
+    # Fixed variable name mismatch here
+    valid_emotions = [e for e in emotions_input if e in EMOTIONS]
+    if not valid_emotions:
+        valid_emotions = ["neutral"]
 
     try:
         topic_idx = int(topic_idx)
@@ -162,10 +164,9 @@ def validate_output(emotion, topic_idx):
 
     if topic_idx not in TOPICS_LIST:
         topic_idx = 0
+
+    return valid_emotions, topic_idx
     
-
-    return emotion, topic_idx
-
 def analyze_comment(model, title, body):
     request_id = str(uuid.uuid4())
     prompt = f"RequestID: {request_id}\nPost Title: {title}\nComment Body: {body}"
@@ -183,23 +184,25 @@ def analyze_comment(model, title, body):
 
             result = json.loads(text)
 
-            emotion = result.get("emotion", "neutral")
+            # Updated default fallback to be a list
+            emotions = result.get("emotions", ["neutral"])
             topic_idx = result.get("topic_index", 0)
 
-            return validate_output(emotion, topic_idx)
+            return validate_output(emotions, topic_idx)
 
         except Exception as e:
             print(f"[Retry {attempt + 1}] Error: {e}")
             time.sleep(2)
 
-    return "neutral", 0
+    # Updated final fallback to be a list
+    return ["neutral"], 0
 
 def main():
     if not os.path.exists(INPUT_FILE):
         print(f"Missing input file: {INPUT_FILE}")
         return
 
-    df = pd.read_csv(INPUT_FILE)
+    df = pd.read_csv(INPUT_FILE).head(10)
     df["row_id"] = df.index
 
     if os.path.exists(OUTPUT_FILE):
@@ -224,13 +227,15 @@ def main():
         body = row["comment_body"]
 
         if pd.isna(body) or str(body).strip() == "":
-            df.at[i, "predicted_emotion"] = "neutral"
+            # Set default as a list in the dataframe
+            df.at[i, "predicted_emotion"] = ["neutral"]
             df.at[i, "predicted_topic"] = 0
             continue
 
-        emotion, topic_idx = analyze_comment(model, title, body)
+        emotions, topic_idx = analyze_comment(model, title, body)
 
-        df.at[i, "predicted_emotion"] = emotion
+        # Assign the list directly
+        df.at[i, "predicted_emotion"] = emotions
         df.at[i, "predicted_topic"] = topic_idx
 
         save_counter += 1

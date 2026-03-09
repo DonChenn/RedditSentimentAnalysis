@@ -1,0 +1,292 @@
+================================================================================
+LABELING QUALITY REPORT
+================================================================================
+
+Total samples processed: 1841
+Samples with disagreement: 394 (21.4%)
+Samples with quality issues: 69 (3.7%)
+
+Average Confidence Scores:
+  Emotion Confidence: 0.500
+  Topic Confidence: 0.500
+  Topic Agreement: 0.923
+
+Low Confidence Samples (for human review):
+  Total: 5
+
+================================================================================
+QUALITY ISSUES FOUND:
+================================================================================
+
+Row 64: NEUTRAL_WITH_OTHERS
+  Text: Will Trump get a fourth Supreme Court justice? Speculation swirls around Alito | Justice Aileen Cannon incoming.
+  Emotions: ['neutral', 'surprise']
+  Topic: 35
+
+Row 73: NEUTRAL_WITH_OTHERS
+  Text: Could somebody cheer me up here? | I am hearing notes of panic from Bondi. Hang in there. There will be a reckoning in the old sense of the word. The bill will come due and it will be paid. 
+  Emotions: ['optimism', 'neutral']
+  Topic: 33
+
+Row 77: NEUTRAL_WITH_OTHERS
+  Text: Could somebody cheer me up here? | The light is that November is coming.
+
+If for whatever reason we are no longer allowed to vote, then we need to have another talk.
+  Emotions: ['optimism', 'neutral']
+  Topic: 14
+
+Row 100: NEUTRAL_WITH_OTHERS
+  Text: Question about the super bowl- couldn’t figure out how to phrase it to look it up😂 | This is a fascinating strategy case. The TL;DR is that the NFL has no substitute so they're never worried about los
+  Emotions: ['neutral', 'curiosity']
+  Topic: 14
+
+Row 138: NEUTRAL_WITH_OTHERS
+  Text: 'Sickening': Ammon Bundy slams ICE as major schism tears apart right-wing militants | We are living in interesting times and it’s creating odd bedfellows.
+  Emotions: ['neutral', 'curiosity']
+  Topic: 14
+
+Row 167: NEUTRAL_WITH_OTHERS
+  Text: Liberal AND conservative beliefs? | There are many liberal religious groups and you do not have to agree on every facet of a platform on any given time. 
+
+There are powerful left wing religious figure
+  Emotions: ['approval', 'neutral']
+  Topic: 14
+
+Row 211: NEUTRAL_WITH_OTHERS
+  Text: Has anyone asked the NRA for statement on the killing of Alex Pretti? | Here ya go 
+
+https://www.msn.com/en-us/news/us/nra-makes-rare-statement-against-trump-admin-over-alex-pretti-shooting/ar-AA1UVNh
+  Emotions: ['neutral', 'curiosity']
+  Topic: 43
+
+Row 225: NEUTRAL_WITH_OTHERS
+  Text: Trump is much for threatening war but yet made up an injury to avoid going to Vietnam. | All four of the Presidents we had that were eligible to serve in Vietnam did not do so.  Two Republicans, Two D
+  Emotions: ['neutral', 'realization']
+  Topic: 23
+
+Row 282: NEUTRAL_WITH_OTHERS
+  Text: Trump should be impeached and removed for his threats against Greenland. | "Why is congress"
+
+You mean why are Republicans
+  Emotions: ['annoyance', 'neutral']
+  Topic: 14
+
+Row 303: NEUTRAL_WITH_OTHERS
+  Text: Everyone make sure you physically have your birth certificate so you can vote. Don't wait for summer. Check the new laws in your state, even RealID isn't proof of citizenship in many states. | This is
+  Emotions: ['neutral', 'realization']
+  Topic: 14
+
+Row 321: NEUTRAL_WITH_OTHERS
+  Text: ICE agent shooter’s own cellphone video undercuts Trump administration's account of Minneapolis killing | Not according to the Fox News commentary…
+  Emotions: ['neutral', 'annoyance']
+  Topic: 11
+
+Row 324: NEUTRAL_WITH_OTHERS
+  Text: ICE shooting live updates: Cellphone video from ICE officer shows fatal Minneapolis shooting | Idk why he was filming like that but I’m glad he was. More videos = more evidence
+  Emotions: ['neutral', 'approval']
+  Topic: 43
+
+Row 388: NEUTRAL_WITH_OTHERS
+  Text: The ‘Trump-class’ battleship faces a large obstacle in its way: Reality | Battleships have been rendered obselete since the british sank multiple italian  battleships in ww2 using carriers which direc
+  Emotions: ['neutral', 'realization']
+  Topic: 23
+
+Row 397: NEUTRAL_WITH_OTHERS
+  Text: US Coast Guard unable to seize Venezuela-linked tanker until backup arrives | Hey, i can't post here because i don't have karma so i'm just gonna say on this post because it's the first post i saw
+
+Li
+  Emotions: ['neutral', 'approval']
+  Topic: 33
+
+Row 465: NEUTRAL_WITH_OTHERS
+  Text: Mark Kelly says Senate will ‘put people under oath’ over reported follow-up strikes in Caribbean | I thought the USA double tapped drone striked weddings in Afghanistan a lot.
+  Emotions: ['neutral', 'surprise']
+  Topic: 23
+
+Row 486: NEUTRAL_WITH_OTHERS
+  Text: A little gem from Project 2025 | They said this on TV I think.  None of their moves were hidden.
+  Emotions: ['neutral', 'realization']
+  Topic: 14
+
+Row 492: NEUTRAL_WITH_OTHERS
+  Text: Prominent Democratic Veterans Urge Troops To Defy 'Illegal Orders' | I’m glad I’m now retired after more than 22 years but it makes me think: in those 22 years, not one time was there ever any trainin
+  Emotions: ['neutral', 'realization']
+  Topic: 43
+
+Row 640: NEUTRAL_WITH_OTHERS
+  Text: Why would Florida pass a bill pledging their electoral votes to whomever wins the national popular vote? | This is a movement called the [National Popular Vote Interstate Compact](https://en.wikipedia
+  Emotions: ['realization', 'neutral']
+  Topic: 14
+
+Row 649: CONFLICTING_EMOTIONS
+  Text: Talk me down…. Please | I’ve had to really limit myself on how much time I spend on all the insanity. I’m terrified but I also know I’m no good to anyone if I’m a wreck. We persevere.
+  Emotions: ['fear', 'optimism']
+  Topic: 33
+
+Row 653: NEUTRAL_WITH_OTHERS
+  Text: Talk me down…. Please | I think you're looking at this correctly. Given that, it's probably still beneficial to try to stay as calm as possible. (watch as I just shatter my glass house)
+  Emotions: ['neutral', 'optimism']
+  Topic: 4
+
+Row 719: NEUTRAL_WITH_OTHERS
+  Text: There's Something Perverse About the Republican Shutdown | Just FYI, the shutdown isn't about the debt ceiling, it's about the budget for the new fiscal year, specifically the discretionary portion.
+  Emotions: ['neutral', 'realization']
+  Topic: 14
+
+Row 749: NEUTRAL_WITH_OTHERS
+  Text: Republican voters aren’t listening. Why don’t Democrat politicians use their time in front of cameras to tell Republican voters the truth about what’s going on?!! | Have you heard of Fox News and OANN
+  Emotions: ['annoyance', 'curiosity', 'neutral']
+  Topic: 11
+
+Row 768: NEUTRAL_WITH_OTHERS
+  Text: Switching sides | Pro-choice ≠ pro-abortion. Think of it like alcohol sales—you may hate alcohol, and have a strict religious aversion to drinking alcohol. But just because alcohol is legal to purchas
+  Emotions: ['approval', 'neutral']
+  Topic: 43
+
+Row 771: NEUTRAL_WITH_OTHERS
+  Text: Switching sides | labels shouldn’t matter. if you don’t connect with conservative politicians anymore, don’t vote for them. no one’s stopping you.
+
+don’t listen to anyone who says that you’re not “lef
+  Emotions: ['approval', 'neutral']
+  Topic: 14
+
+Row 806: NEUTRAL_WITH_OTHERS
+  Text: My gym bros. What are some protein products that isn’t owned by the other side? | Greek Yogurt, Peanut Butter, Eggs, Beef, Chicken, and Fish are some wonderful protein products to consider!
+  Emotions: ['approval', 'neutral']
+  Topic: 46
+
+Row 807: NEUTRAL_WITH_OTHERS
+  Text: My gym bros. What are some protein products that isn’t owned by the other side? | Was curious because I’ve been buying Optimum Nutrition protein powder for years. They are owned by an Irish company an
+  Emotions: ['curiosity', 'neutral']
+  Topic: 0
+
+Row 893: NEUTRAL_WITH_OTHERS
+  Text: After his appearances in England are we still thinking Trump has had mini strokes? | Mini strokes aka TIA or transient ischemic attacks by definition fully resolve within 24 hours. Stroke symptoms wou
+  Emotions: ['neutral', 'realization']
+  Topic: 26
+
+Row 900: NEUTRAL_WITH_OTHERS
+  Text: When did people start trusting the government? | That is the nature of surveys that have a reporting deadline for the summary, but no absolute deadline for respondents.  If 30% respond on time and the
+  Emotions: ['neutral', 'realization']
+  Topic: 14
+
+Row 913: NEUTRAL_WITH_OTHERS
+  Text: How do you address hateful videos like this with your children? | Probably need to know what age group you're asking for. Because it sounds like an age group that's too young to be scrolling TikTok
+  Emotions: ['neutral', 'curiosity']
+  Topic: 42
+
+Row 928: NEUTRAL_WITH_OTHERS
+  Text: What is a 'groyper? What to know about Nick Fuentes' alt-right movement | Several have asked "what's a groyper" since Charlie Kirk's assassination. While we don't have definitive proof that his killer
+  Emotions: ['curiosity', 'neutral']
+  Topic: 19
+
+Row 929: NEUTRAL_WITH_OTHERS
+  Text: What is a 'groyper? What to know about Nick Fuentes' alt-right movement | A lot of news outlets lack the digital literacy to parse memetic ironic brainrot, they ran with Bella Ciao encyclopedia entrie
+  Emotions: ['neutral', 'realization']
+  Topic: 19
+
+Row 930: NEUTRAL_WITH_OTHERS
+  Text: What is a 'groyper? What to know about Nick Fuentes' alt-right movement | I feel like this bit from Wikipedia is important to note…
+
+Fuentes has encouraged the use of jokes and irony among white natio
+  Emotions: ['realization', 'neutral']
+  Topic: 19
+
+Row 940: NEUTRAL_WITH_OTHERS
+  Text: The assassination of Charlie Kirk is antithetical of - and regressive to - securing liberal values | Well of course murder is bad. He was a human being, even if a rerehensible scumbag of a human. It’s
+  Emotions: ['disapproval', 'neutral']
+  Topic: 42
+
+Row 946: NEUTRAL_WITH_OTHERS
+  Text: We need to repeal the 16th amendment. | that’s… not what would happen. the federal government has had the authority to collect taxes since the founding of the republic. one of the very first SCOTUS op
+  Emotions: ['neutral', 'realization']
+  Topic: 41
+
+Row 960: NEUTRAL_WITH_OTHERS
+  Text: 75% of americans support military action against Iran IF it's ended within weeks (CBS POLL) | I was just reading where someone in either the news sub or the politics sub said the approval of it is 25%
+  Emotions: ['neutral', 'curiosity']
+  Topic: 23
+
+Row 971: NEUTRAL_WITH_OTHERS
+  Text: Dan Crenshaw loses his primary to Steve Toth | Isn’t Crenshaw a RINO?
+  Emotions: ['neutral', 'curiosity']
+  Topic: 28
+
+Row 982: NEUTRAL_WITH_OTHERS
+  Text: Former 'South Park' Writer Toby Morton Launches Website to Send Barron Trump to War | I don’t recall them wanting to send Sasha and Malia to Libya 
+  Emotions: ['neutral', 'disapproval']
+  Topic: 19
+
+Row 988: NEUTRAL_WITH_OTHERS
+  Text: Ali Khamenei's son Mojtaba named Iran's new Supreme Leader | "Mojtaba killed in missile strike"
+
+Tomorrow's headline for ya
+  Emotions: ['neutral', 'surprise']
+  Topic: 23
+
+Row 992: NEUTRAL_WITH_OTHERS
+  Text: US strikes 1,700 Iranian targets in 72 hours, pace nearly doubles | Irans ballistic missiles are waning way faster than I thought it would. Plenty of little drones left though.
+  Emotions: ['surprise', 'neutral']
+  Topic: 23
+
+Row 1010: NEUTRAL_WITH_OTHERS
+  Text: Trump exploring backing militias in Iran to topple weakened regime following strikes: reports | "History doesn't repeat itself, but it often rhymes"
+  Emotions: ['neutral', 'curiosity']
+  Topic: 23
+
+Row 1018: NEUTRAL_WITH_OTHERS
+  Text: Fox News poll shows American voters split on Iran military action | Honestly 50/50 is way higher than I excepted for something like this. For Trump this is a win IMO 
+  Emotions: ['surprise', 'neutral']
+  Topic: 23
+
+Row 1065: NEUTRAL_WITH_OTHERS
+  Text: Did This Democrat Darling Twitch Streamer Just Tell His Audience How to Commit Terror Attacks? | In the context within which he said this, nothing will happen. He commented on a foreign war and how th
+  Emotions: ['disapproval', 'neutral']
+  Topic: 33
+
+Row 1072: NEUTRAL_WITH_OTHERS
+  Text: Trump says US Navy could escort tankers in Strait of Hormuz | Not sure how much good this does but it’s a start. The real test will be if the ships are safe and unfortunately that only gets properly h
+  Emotions: ['neutral', 'optimism']
+  Topic: 23
+
+Row 1122: NEUTRAL_WITH_OTHERS
+  Text: Macron says France must be 'feared' as he announces increase in nuclear arsenal | Keep in mind that this is the only EU nuclear power. 
+  Emotions: ['neutral', 'realization']
+  Topic: 23
+
+Row 1153: NEUTRAL_WITH_OTHERS
+  Text: Lesbian Navy Captain Faces Court Martial After $100M Ship Ran Aground, Caught Fire, Sank | 1. This is from 2024
+
+2.  This was the New Zealand military, not the U.S.
+  Emotions: ['neutral', 'realization']
+  Topic: 0
+
+Row 1243: NEUTRAL_WITH_OTHERS
+  Text: Secretary of War Pete Hegseth Updated Us on Operation Epic Fury. Here's What He Said... "All on our terms, with maximum authorities. No stupid rules of engagement, no nation-building quagmire, no demo
+  Emotions: ['neutral', 'curiosity']
+  Topic: 23
+
+Row 1270: NEUTRAL_WITH_OTHERS
+  Text: US military blasts Iranian warship in new video, says regime has 'ZERO' left in Gulf of Oman | This is the second time The US Navy has sank the entire Iranian Navy.
+
+Operation Preying Mantis, after Th
+  Emotions: ['neutral', 'realization']
+  Topic: 23
+
+Row 1282: NEUTRAL_WITH_OTHERS
+  Text: Iran Is Finished. Is Cuba Next? | Trump is collecting one El Presidente a month. It probably will be Cuba
+  Emotions: ['amusement', 'neutral']
+  Topic: 23
+
+Row 1292: NEUTRAL_WITH_OTHERS
+  Text: Pelosi: He (Obama) "did not need authorization" to use force bombing Libya | She’s right. And neither does Trump now or in 2020. And neither did Biden with Syria. And neither did Clinton with Somalia.
+  Emotions: ['neutral', 'realization']
+  Topic: 23
+
+Row 1332: NEUTRAL_WITH_OTHERS
+  Text: U.S. F-15s Crash in Kuwait Friendly Fire Amid Iran Conflict | How friendly is Kuwait, anyway?
+
+[BBC article on the incident](https://www.bbc.com/news/articles/c5y4v8gndz1o) for more info.
+  Emotions: ['neutral', 'curiosity']
+  Topic: 23
+
