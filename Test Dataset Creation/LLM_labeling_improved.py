@@ -1,5 +1,5 @@
-import google.generativeai as genai
-from google.generativeai.types import HarmCategory, HarmBlockThreshold
+from google import genai
+from google.genai import types
 import pandas as pd
 import time
 import os
@@ -15,7 +15,7 @@ load_dotenv()
 API_KEY = os.getenv("API_KEY")
 
 INPUT_FILE = 'Test Dataset Creation/raw_reddit_comments.csv'
-OUTPUT_FILE = 'Test Dataset Creation/final_labeled_reddit_comments.csv'
+OUTPUT_FILE = 'Test Dataset Creation/final_BERT_labeled_reddit_comments.csv'
 DISAGREEMENT_FILE = 'Test Dataset Creation/disagreement_log.csv'
 QUALITY_REPORT_FILE = 'Test Dataset Creation/quality_report.txt'
 
@@ -35,81 +35,66 @@ EMOTIONS = [
 ]
 
 TOPICS_LIST = {
-    0: "Noise/Filler",
-    1: "Mueller Investigation Findings",
-    2: "URLs & Web Metadata",
-    3: "Bill Barr Perjury Allegations",
-    4: "Life & Big Questions",
-    5: "Senate Hearing Debates",
-    6: "Mueller Report Release & Redactions",
-    7: "Russia-Ukraine Invasion & NATO",
-    8: "Special Counsel Public Context",
-    9: "House Oversight & Subpoenas",
-    10: "Fighting for Accountability",
-    11: "Fox, CNN & Media Bias",
-    12: "Congress vs. The Law",
-    13: "Political Talking Points & Emails",
-    14: "How Politics Works",
-    15: "Capitalism vs. Socialism Debate",
-    16: "Reddit Community Feedback",
-    17: "NY Politics & Green New Deal",
-    18: "Senate Majority & McConnell",
-    19: "Identity Politics & Extremism",
-    20: "Leaked Letters & Documents",
-    21: "Arguing over Definitions",
-    22: "Socialism & Welfare",
-    23: "War & Anti-War Views",
-    24: "DOJ Charges & Statements",
-    25: "Impeachment Trial",
-    26: "Health Care & Insurance",
-    27: "Campaign Finance & Economic Costs",
-    28: "Primary Elections & Voter Base",
-    29: "Jobs & Fair Pay",
-    30: "Power & Influences",
-    31: "Russia Sanctions & Collusion",
-    32: "Political Skepticism",
-    33: "Strong Public Reactions",
-    34: "Critique of News Coverage",
-    35: "Supreme Court & Judges",
-    36: "Barr's Report Summary",
-    37: "Race & Civil Rights History",
-    38: "Approval Ratings & Polls",
-    39: "Progressive & Socialist Sentiment",
-    40: "Rating the Attorney General",
-    41: "Taxes & The Wealthy",
-    42: "Violence & Extremism",
-    43: "Law Enforcement & Abortion Rights",
-    44: "Calls for Resignation & Action",
-    45: "Legal Rights & Lying",
-    46: "Unions & Strikes",
-    47: "Obstruction & Collusion",
-    48: "Lying Under Oath",
-    49: "China & Communism"
+    -1: "INVESTIGATION: Mueller Report (Outliers)",
+    0: "INVESTIGATION: Mueller/Barr/Impeachment",
+    1: "FOREIGN POLICY: Russia-Ukraine Conflict",
+    2: "ELECTIONS: Voting & Polls",
+    3: "ECONOMY: Wealth & Taxes",
+    4: "INVESTIGATION: Barr Testimony & Credibility",
+    5: "SOCIAL: Gender & Feminism",
+    6: "SOCIAL: Race & Racism",
+    7: "ELECTIONS: Primary Candidates",
+    8: "TECH: Social Media & Platforms",
+    9: "LABOR: Unions & Wages",
+    10: "JUSTICE: Prison & Reform",
+    11: "JUSTICE: Gun Control & Policing",
+    12: "MEDIA: Fox News (Report Context)",
+    13: "ECONOMY: Inflation & Markets",
+    14: "HEALTH: Healthcare Policy",
+    15: "NOISE: Vitriol & Insults",
+    16: "IDEOLOGY: Capitalism vs Socialism",
+    17: "NOISE: Conversational Filler",
+    18: "SOCIAL: Abortion & Reproductive Rights",
+    19: "HEALTH: COVID-19 Pandemic",
+    20: "POLITICS: Pelosi/Warren Leadership",
+    21: "INVESTIGATION: Lindsey Graham Context",
+    22: "NOISE: Subreddit Rules & Bans",
+    23: "ECONOMY: Housing & Real Estate",
+    24: "SOCIAL: Student Debt & Education",
+    25: "FOREIGN POLICY: China & Trade",
+    26: "JUSTICE: Supreme Court",
+    27: "FOREIGN POLICY: Latin America",
+    28: "POLITICS: Dishonesty & Rhetoric",
+    29: "ENVIRONMENT: Climate Change",
+    30: "SOCIAL: Immigration & Border",
+    31: "IDEOLOGY: Libertarianism",
+    32: "RELIGION: Jewish Affairs & Geopolitics",
+    33: "NOISE: Auto-Moderator",
+    34: "INVESTIGATION: DOJ & Sexual Assault",
+    35: "HISTORY: Reagan Presidency",
+    36: "INVESTIGATION: Resignations & Leaks",
+    37: "INTERNATIONAL: Canadian Trucker Convoy",
+    38: "ECONOMY: Infrastructure",
+    39: "IDEOLOGY: Extremism & Nazism",
+    40: "IDEOLOGY: Democratic Systems",
+    41: "JUSTICE: Legal Profession",
+    42: "INVESTIGATION: Document Correspondence",
+    43: "POLITICS: Hillary Clinton Emails",
+    44: "SOCIAL: Religion & Christianity",
+    45: "POLITICS: Florida & DeSantis COVID",
+    46: "MEDIA: Harassment & Fox News",
+    47: "INTERNATIONAL: India Conflict",
+    48: "ECONOMY: Bitcoin & Crypto"
 }
 
 def setup_model():
-    genai.configure(api_key=API_KEY)
+    client = genai.Client(api_key=API_KEY)
 
     class AnnotationResponse(typing_extensions.TypedDict):
         emotions: list[str]
         topic_index: int
-        emotion_confidence: float  # NEW: Confidence scoring
-        topic_confidence: float    # NEW: Confidence scoring
-
-    generation_config = {
-        "temperature": 0.2,  # IMPROVED: Increased from 0.05 for better diversity
-        "top_p": 0.9,
-        "max_output_tokens": 512,
-        "response_mime_type": "application/json",
-        "response_schema": AnnotationResponse
-    }
-
-    safety_settings = {
-        HarmCategory.HARM_CATEGORY_HATE_SPEECH: HarmBlockThreshold.BLOCK_NONE,
-        HarmCategory.HARM_CATEGORY_HARASSMENT: HarmBlockThreshold.BLOCK_NONE,
-        HarmCategory.HARM_CATEGORY_SEXUALLY_EXPLICIT: HarmBlockThreshold.BLOCK_NONE,
-        HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT: HarmBlockThreshold.BLOCK_NONE,
-    }
+        emotion_confidence: float
+        topic_confidence: float
 
     formatted_topics = "\n".join([f"Index {k}: {v}" for k, v in TOPICS_LIST.items()])
 
@@ -123,31 +108,31 @@ Example 1:
 Post Title: "Great news for healthcare"
 Comment: "I'm so proud of what we've accomplished together! This will help millions."
 Analysis:
-{{"emotions": ["pride", "joy"], "topic_index": 26, "emotion_confidence": 0.9, "topic_confidence": 0.95}}
+{{"emotions": ["pride", "joy"], "topic_index": 14, "emotion_confidence": 0.9, "topic_confidence": 0.95}}
 
 Example 2:
 Post Title: "Latest scandal"
 Comment: "This is absolutely disgusting. I can't believe they would lie to us like this."
 Analysis:
-{{"emotions": ["disgust", "anger"], "topic_index": 33, "emotion_confidence": 0.95, "topic_confidence": 0.85}}
+{{"emotions": ["disgust", "anger"], "topic_index": 28, "emotion_confidence": 0.95, "topic_confidence": 0.85}}
 
 Example 3:
 Post Title: "What do you think?"
 Comment: "What happens next? I'm curious to see how this plays out."
 Analysis:
-{{"emotions": ["curiosity"], "topic_index": 14, "emotion_confidence": 0.8, "topic_confidence": 0.7}}
+{{"emotions": ["curiosity"], "topic_index": 17, "emotion_confidence": 0.8, "topic_confidence": 0.7}}
 
 Example 4:
 Post Title: "Economic policy discussion"
 Comment: "The wealthy need to pay their fair share. It's only right."
 Analysis:
-{{"emotions": ["approval", "disapproval"], "topic_index": 41, "emotion_confidence": 0.85, "topic_confidence": 0.9}}
+{{"emotions": ["approval", "disapproval"], "topic_index": 3, "emotion_confidence": 0.85, "topic_confidence": 0.9}}
 
 Example 5:
 Post Title: "Breaking news"
 Comment: "ok"
 Analysis:
-{{"emotions": ["neutral"], "topic_index": 0, "emotion_confidence": 0.6, "topic_confidence": 0.5}}
+{{"emotions": ["neutral"], "topic_index": -1, "emotion_confidence": 0.6, "topic_confidence": 0.5}}
 
 TASK:
 Analyze Reddit comments and assign:
@@ -174,7 +159,7 @@ TOPIC SELECTION RULES:
   3 = dominant
 - Choose the topic with the highest score.
 - If there is a tie, choose the LOWER index.
-- If no topic scores 1 or higher, choose Index 0 (Noise/Filler).
+- If no topic scores 1 or higher, choose Index -1 (Outliers/Unclassifiable).
 - Overlapping topics are expected.
 - Relevance is based on the comment's MAIN CLAIM, not keyword frequency.
 - Ignore incidental or passing mentions.
@@ -202,12 +187,22 @@ Return ONLY valid JSON:
 Do NOT include explanations or internal scores.
 """
 
-    return genai.GenerativeModel(
-        model_name=MODEL_NAME,
-        generation_config=generation_config,
-        safety_settings=safety_settings,
+    config = types.GenerateContentConfig(
+        temperature=0.2,
+        top_p=0.9,
+        max_output_tokens=512,
+        response_mime_type="application/json",
+        response_schema=AnnotationResponse,
+        safety_settings=[
+            types.SafetySetting(category="HARM_CATEGORY_HATE_SPEECH", threshold="BLOCK_NONE"),
+            types.SafetySetting(category="HARM_CATEGORY_HARASSMENT", threshold="BLOCK_NONE"),
+            types.SafetySetting(category="HARM_CATEGORY_SEXUALLY_EXPLICIT", threshold="BLOCK_NONE"),
+            types.SafetySetting(category="HARM_CATEGORY_DANGEROUS_CONTENT", threshold="BLOCK_NONE"),
+        ],
         system_instruction=system_instruction
     )
+
+    return client, config
 
 def validate_output(emotions_input, topic_idx):
     valid_emotions = [e for e in emotions_input if e in EMOTIONS]
@@ -217,23 +212,27 @@ def validate_output(emotions_input, topic_idx):
     try:
         topic_idx = int(topic_idx)
     except (ValueError, TypeError):
-        topic_idx = 0
+        topic_idx = -1
 
     if topic_idx not in TOPICS_LIST:
-        topic_idx = 0
+        topic_idx = -1
 
     return valid_emotions, topic_idx
 
-def analyze_comment_single(model, title, body):
+def analyze_comment_single(client, config, title, body):
     """Single LLM call for a comment."""
     request_id = str(uuid.uuid4())
     prompt = f"RequestID: {request_id}\nPost Title: {title}\nComment Body: {body}"
 
     for attempt in range(3):
         try:
-            response = model.generate_content(prompt)
+            response = client.models.generate_content(
+                model=MODEL_NAME,
+                contents=prompt,
+                config=config
+            )
 
-            if not response.parts:
+            if not response.candidates:
                 time.sleep(2)
                 continue
 
@@ -243,7 +242,7 @@ def analyze_comment_single(model, title, body):
             result = json.loads(text)
 
             emotions = result.get("emotions", ["neutral"])
-            topic_idx = result.get("topic_index", 0)
+            topic_idx = result.get("topic_index", -1)
             emotion_conf = result.get("emotion_confidence", 0.5)
             topic_conf = result.get("topic_confidence", 0.5)
 
@@ -256,15 +255,15 @@ def analyze_comment_single(model, title, body):
                 print(f"[Final attempt failed] Error: {e}")
             time.sleep(2)
 
-    return ["neutral"], 0, 0.0, 0.0
+    return ["neutral"], -1, 0.0, 0.0
 
 # NEW: Multi-LLM consensus
-def analyze_comment_with_consensus(model, title, body, num_samples=NUM_CONSENSUS_SAMPLES):
+def analyze_comment_with_consensus(client, config, title, body, num_samples=NUM_CONSENSUS_SAMPLES):
     """Get consensus from multiple LLM calls."""
     all_results = []
 
     for sample_idx in range(num_samples):
-        emotions, topic, emotion_conf, topic_conf = analyze_comment_single(model, title, body)
+        emotions, topic, emotion_conf, topic_conf = analyze_comment_single(client, config, title, body)
         all_results.append({
             'emotions': emotions,
             'topic': topic,
@@ -357,12 +356,17 @@ def main():
     # Resume from existing file if available
     if os.path.exists(OUTPUT_FILE):
         existing = pd.read_csv(OUTPUT_FILE)
-        df = df.merge(
-            existing[["row_id", "predicted_emotion", "predicted_topic",
-                     "emotion_confidence", "topic_confidence", "topic_agreement"]],
-            on="row_id",
-            how="left"
-        )
+        # Only merge columns that exist in the existing file
+        merge_cols = ["row_id", "predicted_emotion", "predicted_topic"]
+        for col in ["emotion_confidence", "topic_confidence", "topic_agreement"]:
+            if col in existing.columns:
+                merge_cols.append(col)
+        df = df.merge(existing[merge_cols], on="row_id", how="left")
+        # Ensure all expected columns are present
+        for col in ["predicted_emotion", "predicted_topic",
+                    "emotion_confidence", "topic_confidence", "topic_agreement"]:
+            if col not in df.columns:
+                df[col] = None
         already_done = df["predicted_emotion"].notna().sum()
         print(f"📋 Resuming: {already_done} samples already labeled")
     else:
@@ -372,7 +376,7 @@ def main():
         df["topic_confidence"] = None
         df["topic_agreement"] = None
 
-    model = setup_model()
+    client, config = setup_model()
     save_counter = 0
     disagreements = []
     quality_issues = []
@@ -386,21 +390,21 @@ def main():
 
         # Handle empty comments
         if pd.isna(body) or str(body).strip() == "":
-            df.at[i, "predicted_emotion"] = ["neutral"]
-            df.at[i, "predicted_topic"] = 0
+            df.at[i, "predicted_emotion"] = str(["neutral"])
+            df.at[i, "predicted_topic"] = -1
             df.at[i, "emotion_confidence"] = 1.0
             df.at[i, "topic_confidence"] = 1.0
             df.at[i, "topic_agreement"] = 1.0
             continue
 
         # IMPROVED: Use consensus approach
-        result = analyze_comment_with_consensus(model, title, body)
+        result = analyze_comment_with_consensus(client, config, title, body)
 
         emotions = result['emotions']
         topic_idx = result['topic']
 
-        # Store results
-        df.at[i, "predicted_emotion"] = emotions
+        # Store results (emotions stored as string for CSV compatibility)
+        df.at[i, "predicted_emotion"] = str(emotions)
         df.at[i, "predicted_topic"] = topic_idx
         df.at[i, "emotion_confidence"] = result['emotion_confidence']
         df.at[i, "topic_confidence"] = result['topic_confidence']
