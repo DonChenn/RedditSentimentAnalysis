@@ -1,0 +1,214 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: system-ui, -apple-system, sans-serif;
+  background: #0f1117;
+  color: #e8eaf0;
+  min-height: 100vh;
+  display: block;
+}
+
+.app {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 4rem;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+header h1 {
+  font-size: 1.9rem;
+  font-weight: 700;
+  color: #fff;
+}
+header p {
+  margin-top: 0.4rem;
+  color: #8892a4;
+  font-size: 0.95rem;
+}
+
+.card {
+  background: #1a1d27;
+  border: 1px solid #2a2f3e;
+  border-radius: 12px;
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 1.25rem;
+}
+
+/* controls */
+.controls {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.controls label {
+  font-size: 0.9rem;
+  color: #8892a4;
+  white-space: nowrap;
+}
+.controls select {
+  flex: 1;
+  min-width: 200px;
+  background: #0f1117;
+  border: 1px solid #2a2f3e;
+  color: #e8eaf0;
+  border-radius: 8px;
+  padding: 0.55rem 0.75rem;
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+.controls select:disabled { opacity: 0.5; cursor: default; }
+.controls button {
+  background: #4f6ef7;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 0.55rem 1.4rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+  white-space: nowrap;
+}
+.controls button:hover:not(:disabled) { background: #3b57e0; }
+.controls button:disabled { opacity: 0.45; cursor: default; }
+
+/* log */
+.log h3 { font-size: 0.85rem; color: #8892a4; margin-bottom: 0.6rem; }
+.log-body {
+  max-height: 180px;
+  overflow-y: auto;
+  font-family: monospace;
+  font-size: 0.8rem;
+  color: #a0aab8;
+  line-height: 1.6;
+}
+.log-line { padding: 0.05rem 0; }
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+.blink { animation: blink 1s infinite; color: #4f6ef7; }
+
+/* results */
+.results-header { margin-bottom: 1.25rem; }
+.results-header h2 { font-size: 1.35rem; color: #fff; }
+.results-header .meta {
+  margin-top: 0.35rem;
+  font-size: 0.88rem;
+  color: #8892a4;
+}
+.lib { color: #5b9cf6; }
+.con { color: #f47c5b; }
+
+/* political bar */
+.pol-bar-wrap { margin-top: 0.5rem; }
+.pol-bar {
+  display: flex;
+  height: 28px;
+  border-radius: 6px;
+  overflow: hidden;
+  background: #0f1117;
+}
+.pol-segment {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #fff;
+  transition: width 0.6s ease;
+}
+.pol-segment.liberal      { background: #3b70d4; }
+.pol-segment.conservative { background: #c94b2d; }
+.pol-bar-labels {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0.4rem;
+  font-size: 0.8rem;
+  color: #8892a4;
+}
+.lib-label { color: #5b9cf6; }
+.con-label { color: #f47c5b; }
+
+/* summaries */
+.summaries {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+.summary-card {
+  border-radius: 10px;
+  padding: 1rem 1.25rem;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #d0d8e8;
+}
+.lib-card  { background: rgba(59, 112, 212, 0.12); border-left: 3px solid #3b70d4; }
+.con-card  { background: rgba(201,  75,  45, 0.12); border-left: 3px solid #c94b2d; }
+
+/* group cards */
+.group-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+@media (max-width: 600px) { .group-cards { grid-template-columns: 1fr; } }
+.group-card {
+  background: #1a1d27;
+  border: 1px solid #2a2f3e;
+  border-radius: 12px;
+  padding: 1.1rem 1.25rem;
+}
+.lib-border { border-top: 3px solid #3b70d4; }
+.con-border { border-top: 3px solid #c94b2d; }
+.group-card h3 { font-size: 1rem; margin-bottom: 0.75rem; }
+.group-card h4 { font-size: 0.8rem; color: #8892a4; margin: 0.9rem 0 0.5rem; }
+
+/* bucket bar */
+.bucket-bar-wrap { margin-top: 0.25rem; }
+.bucket-bar {
+  display: flex;
+  height: 10px;
+  border-radius: 5px;
+  overflow: hidden;
+  background: #0f1117;
+}
+.bucket { transition: width 0.6s ease; }
+.bucket.positive { background: #2ecc71; }
+.bucket.neutral  { background: #7f8c8d; }
+.bucket.negative { background: #e74c3c; }
+.bucket-labels {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0.35rem;
+  font-size: 0.72rem;
+  color: #8892a4;
+}
+.bucket-labels .pos { color: #2ecc71; }
+.bucket-labels .neu { color: #95a5a6; }
+.bucket-labels .neg { color: #e74c3c; }
+
+/* emotion chips */
+.emotion-chips { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.25rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #fff;
+}
+.chip em { font-style: normal; opacity: 0.8; font-size: 0.7rem; }
+
+/* confidence */
+.confidence-row {
+  text-align: right;
+  font-size: 0.82rem;
+  color: #8892a4;
+}
+.confidence-row strong { color: #e8eaf0; }
