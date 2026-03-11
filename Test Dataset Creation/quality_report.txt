@@ -2,116 +2,207 @@
 LABELING QUALITY REPORT
 ================================================================================
 
-Total samples processed: 1841
-Samples with disagreement: 77 (4.2%)
-Samples with quality issues: 18 (1.0%)
+Total samples processed: 2676
+Samples with disagreement: 149 (5.6%)
+Samples with quality issues: 34 (1.3%)
 
 Average Confidence Scores:
-  Emotion Confidence: 0.777
-  Topic Confidence: 0.709
-  Topic Agreement: 0.938
+  Emotion Confidence: 0.786
+  Topic Confidence: 0.759
+  Topic Agreement: 0.942
 
 Low Confidence Samples (for human review):
-  Total: 38
+  Total: 42
 
 ================================================================================
 QUALITY ISSUES FOUND:
 ================================================================================
 
-Row 1484: NEUTRAL_WITH_OTHERS
-  Text: The 50-Year War — America’s strikes against Iran are not the start of a fight, but the beginning of the end of one. | We first had fights and wars with the Barbary Pirates, the Barbary War under Jeffe
-  Emotions: ['neutral', 'realization']
-  Topic: 1
-
-Row 1506: NEUTRAL_WITH_OTHERS
-  Text: 3 US service members killed, 5 seriously wounded in Iran operation | From my understanding, it was a helo that malfunctioned and went down, not from an Iranian strike.  Still waiting official word.
+Row 1809: NEUTRAL_WITH_OTHERS
+  Text: Dan Crenshaw loses his primary to Steve Toth | Isn’t Crenshaw a RINO?
   Emotions: ['neutral', 'curiosity']
   Topic: 1
 
-Row 1508: CONFLICTING_EMOTIONS
+Row 1830: NEUTRAL_WITH_OTHERS
+  Text: US strikes 1,700 Iranian targets in 72 hours, pace nearly doubles | Irans ballistic missiles are waning way faster than I thought it would. Plenty of little drones left though.
+  Emotions: ['surprise', 'neutral']
+  Topic: 6
+
+Row 1831: CONFLICTING_EMOTIONS
+  Text: US strikes 1,700 Iranian targets in 72 hours, pace nearly doubles | Iran's navy is at the bottom of the sea.  
+Its air force is scrap metal.  
+Its radar network is blind and bleeding.  
+Trump just dro
+  Emotions: ['anger', 'disapproval', 'excitement']
+  Topic: 6
+
+Row 1848: NEUTRAL_WITH_OTHERS
+  Text: Trump exploring backing militias in Iran to topple weakened regime following strikes: reports | "History doesn't repeat itself, but it often rhymes"
+  Emotions: ['neutral', 'curiosity']
+  Topic: 6
+
+Row 1864: NEUTRAL_WITH_OTHERS
+  Text: 3 hero Austin cops who stopped deadly bar shooting expected to be dragged before grand jury thanks to George Floyd-era policy | According to the article, Austin has a policy now of doing this with eve
+  Emotions: ['neutral', 'realization']
+  Topic: 26
+
+Row 1903: NEUTRAL_WITH_OTHERS
+  Text: Did This Democrat Darling Twitch Streamer Just Tell His Audience How to Commit Terror Attacks? | In the context within which he said this, nothing will happen. He commented on a foreign war and how th
+  Emotions: ['disapproval', 'neutral']
+  Topic: 16
+
+Row 1925: NEUTRAL_WITH_OTHERS
+  Text: Israel bombs Iran’s top mullahs as they count votes for next supreme leader | News stories say his son won, so i guess they counted them somehow.
+  Emotions: ['neutral', 'curiosity']
+  Topic: 6
+
+Row 1926: NEUTRAL_WITH_OTHERS
+  Text: Israel bombs Iran’s top mullahs as they count votes for next supreme leader | Dang. They're unaliving all the murdering, rapist, oppressors and terrorists.
+
+That's just terrible. /S
+  Emotions: ['disapproval', 'neutral']
+  Topic: 6
+
+Row 1991: NEUTRAL_WITH_OTHERS
+  Text: Lesbian Navy Captain Faces Court Martial After $100M Ship Ran Aground, Caught Fire, Sank | 1. This is from 2024
+
+2.  This was the New Zealand military, not the U.S.
+  Emotions: ['neutral', 'realization']
+  Topic: -1
+
+Row 2070: NEUTRAL_WITH_OTHERS
+  Text: Nancy Pelosi Says the President Does NOT Need Congressional Approval to Bomb Another Country | Bill Clinton conducted a protracted air war in Kosovo without a declaration of war. Nancy knows that she 
+  Emotions: ['approval', 'neutral']
+  Topic: 6
+
+Row 2089: NEUTRAL_WITH_OTHERS
+  Text: The Iran Endgame — Donald Trump is sending contradictory signals about the point of Operation Epic Fury. The goal should be simple: Dismantle the IRGC. | The actions are what to pay attention to. A lo
+  Emotions: ['neutral', 'realization']
+  Topic: 6
+
+Row 2108: NEUTRAL_WITH_OTHERS
+  Text: US military blasts Iranian warship in new video, says regime has 'ZERO' left in Gulf of Oman | This is the second time The US Navy has sank the entire Iranian Navy.
+
+Operation Preying Mantis, after Th
+  Emotions: ['neutral', 'realization']
+  Topic: 6
+
+Row 2132: NEUTRAL_WITH_OTHERS
+  Text: Pelosi: He (Obama) "did not need authorization" to use force bombing Libya | It was (D)ifferent.
+  Emotions: ['neutral', 'annoyance']
+  Topic: 3
+
+Row 2170: NEUTRAL_WITH_OTHERS
+  Text: U.S. F-15s Crash in Kuwait Friendly Fire Amid Iran Conflict | How friendly is Kuwait, anyway?
+
+[BBC article on the incident](https://www.bbc.com/news/articles/c5y4v8gndz1o) for more info.
+  Emotions: ['neutral', 'curiosity']
+  Topic: 6
+
+Row 2186: NEUTRAL_WITH_OTHERS
+  Text: 🚨Shocking explicit footage of the death of the Supreme Leader🚨 | well, at least we have proof.
+  Emotions: ['neutral', 'realization']
+  Topic: -1
+
+Row 2240: NEUTRAL_WITH_OTHERS
+  Text: Liberation | Not sure if this is in Tehran or just another "mostly peaceful protest" in Oakland, Baltimore, St. Louis or Detroit. 
+  Emotions: ['neutral', 'annoyance']
+  Topic: 7
+
+Row 2283: CONFLICTING_EMOTIONS
+  Text: All over Iran people cheered on announcement of Khamenei death, Trump says | Anyone with common sense cheered. This terrorist killed 36000 people a month ago. He got what he deserved.
+  Emotions: ['approval', 'disgust', 'joy']
+  Topic: 6
+
+Row 2299: NEUTRAL_WITH_OTHERS
+  Text: American forces sink Iranian warship | Congrats.
+
+Not sure when the last time was that US forces sunk an enemy ship? I don't imagine this happens very often in recent wars.
+
+Meanwhile, BBC is reportin
+  Emotions: ['neutral', 'curiosity']
+  Topic: 6
+
+Row 2305: NEUTRAL_WITH_OTHERS
+  Text: EXCLUSIVE: Alleged IRGC private chat claims school strike was “unintentional mistake” to blame U.S. | Should be easy enough to examine the shrapnel and identify who made the rocket/bomb/whatever
+  Emotions: ['neutral', 'curiosity']
+  Topic: 6
+
+Row 2321: NEUTRAL_WITH_OTHERS
+  Text: The 50-Year War — America’s strikes against Iran are not the start of a fight, but the beginning of the end of one. | We first had fights and wars with the Barbary Pirates, the Barbary War under Jeffe
+  Emotions: ['neutral', 'realization']
+  Topic: 7
+
+Row 2343: NEUTRAL_WITH_OTHERS
+  Text: 3 US service members killed, 5 seriously wounded in Iran operation | From my understanding, it was a helo that malfunctioned and went down, not from an Iranian strike.  Still waiting official word.
+  Emotions: ['neutral', 'curiosity']
+  Topic: 6
+
+Row 2345: CONFLICTING_EMOTIONS
   Text: 3 US service members killed, 5 seriously wounded in Iran operation | I was afraid, but prepared, when Trump said that our troops would be at risk. 
 Rest in piece and thanks you for your service. I hop
   Emotions: ['fear', 'sadness', 'gratitude']
-  Topic: 1
+  Topic: 6
 
-Row 1529: NEUTRAL_WITH_OTHERS
-  Text: Sen Fetterman Says Trump’s Iran Strike Was ‘Entirely Appropriate’ Response To Longstanding Threat |  No offense, but the dude got "The Trip". I wish I could just believe anyone's opinion on this issue
-  Emotions: ['neutral', 'disapproval']
-  Topic: 1
-
-Row 1535: NEUTRAL_WITH_OTHERS
+Row 2372: NEUTRAL_WITH_OTHERS
   Text: Former Iranian President Ahmadinejad reportedly killed in Israeli strikes | Damn. I was looking forward to the Iranian version of the most wanted card deck to go along with my one from Iraq. Oh well.
   Emotions: ['disappointment', 'neutral']
-  Topic: 1
+  Topic: 6
 
-Row 1545: NEUTRAL_WITH_OTHERS
+Row 2382: NEUTRAL_WITH_OTHERS
   Text: The Iran Strike Is All About China | Of course it’s about China, and Russia to an extent.
 
 We can’t attack China or Russia directly without WWIII, so we weaken them by taking out the fuel and other re
   Emotions: ['neutral', 'realization']
-  Topic: 25
+  Topic: 6
 
-Row 1547: NEUTRAL_WITH_OTHERS
+Row 2384: NEUTRAL_WITH_OTHERS
   Text: The Iran Strike Is All About China | It's not all about China, but just like Venezuela it's a direct warning to China.  
   Emotions: ['neutral', 'disapproval']
-  Topic: 25
+  Topic: 6
 
-Row 1562: NEUTRAL_WITH_OTHERS
+Row 2399: NEUTRAL_WITH_OTHERS
   Text: Housing Secretary Scott Turner: 50% of everyone on subsidized housing stays there for more than 15 years | Who would leave discounted housing if they didn't have to?
-  Emotions: ['neutral', 'annoyance']
-  Topic: 23
+  Emotions: ['neutral', 'curiosity']
+  Topic: 28
 
-Row 1563: NEUTRAL_WITH_OTHERS
+Row 2400: NEUTRAL_WITH_OTHERS
   Text: Housing Secretary Scott Turner: 50% of everyone on subsidized housing stays there for more than 15 years | I have Section 8 tenants and they are generally amazing.  Payment is always on time or if the
   Emotions: ['approval', 'neutral']
-  Topic: 23
+  Topic: 28
 
-Row 1612: CONFLICTING_EMOTIONS
+Row 2448: CONFLICTING_EMOTIONS
   Text: Iran just stated that they are going to hit very hard today, harder than they have ever hit before. THEY BETTER NOT DO THAT, HOWEVER, BECAUSE IF THEY DO, WE WILL HIT THEM WITH A FORCE THAT HAS NEVER B
   Emotions: ['annoyance', 'fear', 'optimism']
-  Topic: 1
+  Topic: 6
 
-Row 1698: NEUTRAL_WITH_OTHERS
+Row 2533: NEUTRAL_WITH_OTHERS
   Text: State Media Confirms Ali Khamenei Has Been Eliminated | He's facing judgement. Imagine his surprise.
-  Emotions: ['neutral', 'amusement']
-  Topic: -1
-
-Row 1712: NEUTRAL_WITH_OTHERS
-  Text: 🚨Breaking: District Judge Overturns Khamenei's  Death | Boasberg? /s
   Emotions: ['neutral', 'surprise']
-  Topic: -1
+  Topic: 6
 
-Row 1716: NEUTRAL_WITH_OTHERS
+Row 2551: NEUTRAL_WITH_OTHERS
   Text: Khamenei killed in opening strike on Iran, Israel officials believe | Don’t think this has been verified. Seeing on X that he is expected to speak soon.
   Emotions: ['neutral', 'curiosity']
-  Topic: 1
+  Topic: 6
 
-Row 1717: NEUTRAL_WITH_OTHERS
+Row 2552: NEUTRAL_WITH_OTHERS
   Text: Khamenei killed in opening strike on Iran, Israel officials believe | ynetnews seems to be the only one reporting his death. I just looked up his name and am not seeing any major news sources stating 
-  Emotions: ['curiosity', 'neutral']
-  Topic: 1
+  Emotions: ['neutral', 'curiosity']
+  Topic: 6
 
-Row 1748: NEUTRAL_WITH_OTHERS
+Row 2583: NEUTRAL_WITH_OTHERS
   Text: Scouting America (fka Boy Scouts of America) and the DoW | I’m involved in Scouting, but don’t usually follow the national stuff so I hadn’t heard of this. Here’s some actual information for anyone el
   Emotions: ['curiosity', 'neutral']
-  Topic: -1
+  Topic: 7
 
-Row 1788: NEUTRAL_WITH_OTHERS
-  Text: It’s happening | Our problem is this 
-
-[https://www.usdebtclock.org/](https://www.usdebtclock.org/)
-
-
-  Emotions: ['neutral', 'disappointment']
-  Topic: 3
-
-Row 1803: NEUTRAL_WITH_OTHERS
+Row 2638: NEUTRAL_WITH_OTHERS
   Text: Hegseth bans military from attending Princeton, Columbia, other elite universities: 'Wokeness and weakness' | I know it was different times, but Ike was president of Columbia
-  Emotions: ['neutral', 'realization']
-  Topic: 24
+  Emotions: ['neutral', 'curiosity']
+  Topic: 7
 
-Row 1829: NEUTRAL_WITH_OTHERS
+Row 2664: NEUTRAL_WITH_OTHERS
   Text: Thomas Massie calls Iran attack a 'war of aggression' by the US | Remember last year when Schumer called Trump weak on Iran?
   Emotions: ['neutral', 'annoyance']
-  Topic: 1
+  Topic: 6
 

@@ -14,8 +14,8 @@ from collections import Counter
 load_dotenv()
 API_KEY = os.getenv("API_KEY")
 
-INPUT_FILE = 'Test Dataset Creation/raw_reddit_comments.csv'
-OUTPUT_FILE = 'Test Dataset Creation/final_BERT_labeled_reddit_comments.csv'
+INPUT_FILE = 'Test Dataset Creation/new_raw_reddit_comments.csv'
+OUTPUT_FILE = 'Test Dataset Creation/combined_BERT_labeled_reddit_comments.csv'
 DISAGREEMENT_FILE = 'Test Dataset Creation/disagreement_log.csv'
 QUALITY_REPORT_FILE = 'Test Dataset Creation/quality_report.txt'
 
@@ -35,56 +35,39 @@ EMOTIONS = [
 ]
 
 TOPICS_LIST = {
-    -1: "INVESTIGATION: Mueller Report (Outliers)",
-    0: "INVESTIGATION: Mueller/Barr/Impeachment",
-    1: "FOREIGN POLICY: Russia-Ukraine Conflict",
-    2: "ELECTIONS: Voting & Polls",
-    3: "ECONOMY: Wealth & Taxes",
-    4: "INVESTIGATION: Barr Testimony & Credibility",
-    5: "SOCIAL: Gender & Feminism",
-    6: "SOCIAL: Race & Racism",
-    7: "ELECTIONS: Primary Candidates",
-    8: "TECH: Social Media & Platforms",
-    9: "LABOR: Unions & Wages",
-    10: "JUSTICE: Prison & Reform",
-    11: "JUSTICE: Gun Control & Policing",
-    12: "MEDIA: Fox News (Report Context)",
-    13: "ECONOMY: Inflation & Markets",
-    14: "HEALTH: Healthcare Policy",
-    15: "NOISE: Vitriol & Insults",
-    16: "IDEOLOGY: Capitalism vs Socialism",
-    17: "NOISE: Conversational Filler",
-    18: "SOCIAL: Abortion & Reproductive Rights",
-    19: "HEALTH: COVID-19 Pandemic",
-    20: "POLITICS: Pelosi/Warren Leadership",
-    21: "INVESTIGATION: Lindsey Graham Context",
-    22: "NOISE: Subreddit Rules & Bans",
-    23: "ECONOMY: Housing & Real Estate",
-    24: "SOCIAL: Student Debt & Education",
-    25: "FOREIGN POLICY: China & Trade",
-    26: "JUSTICE: Supreme Court",
-    27: "FOREIGN POLICY: Latin America",
-    28: "POLITICS: Dishonesty & Rhetoric",
-    29: "ENVIRONMENT: Climate Change",
-    30: "SOCIAL: Immigration & Border",
-    31: "IDEOLOGY: Libertarianism",
-    32: "RELIGION: Jewish Affairs & Geopolitics",
-    33: "NOISE: Auto-Moderator",
-    34: "INVESTIGATION: DOJ & Sexual Assault",
-    35: "HISTORY: Reagan Presidency",
-    36: "INVESTIGATION: Resignations & Leaks",
-    37: "INTERNATIONAL: Canadian Trucker Convoy",
-    38: "ECONOMY: Infrastructure",
-    39: "IDEOLOGY: Extremism & Nazism",
-    40: "IDEOLOGY: Democratic Systems",
-    41: "JUSTICE: Legal Profession",
-    42: "INVESTIGATION: Document Correspondence",
-    43: "POLITICS: Hillary Clinton Emails",
-    44: "SOCIAL: Religion & Christianity",
-    45: "POLITICS: Florida & DeSantis COVID",
-    46: "MEDIA: Harassment & Fox News",
-    47: "INTERNATIONAL: India Conflict",
-    48: "ECONOMY: Bitcoin & Crypto"
+    0: "INVESTIGATION: Government Investigations",
+    1: "ELECTIONS: Campaigns & Primaries",
+    2: "MODERATION: Community Interaction Messages",
+    3: "POLITICS: Legislative Branch & Governance",
+    4: "IDEOLOGY: Economic & Political Systems",
+    5: "POLITICS: Ethical Misconduct & Accountability",
+    6: "FOREIGN POLICY: Russia-Ukraine Conflict",
+    7: "CULTURE: Values & Historical Identity",
+    8: "IDEOLOGY: Extremism & Global Conflict",
+    9: "LABOR: Workers Rights & Unions",
+    10: "SOCIAL: Race & Civil Rights",
+    11: "ECONOMY: Economics & Markets",
+    12: "SOCIAL: Gender & Identity",
+    13: "MEDIA: News Outlets & Propaganda",
+    14: "ENVIRONMENT & IMMIGRATION: Climate & Borders",
+    15: "POLITICS: Impeachment & Presidential Trials",
+    16: "TECH: Social Media & Platform Rules",
+    17: "ECONOMY: Wealth & Taxation",
+    18: "POLITICS: Campaign Finance & Corruption",
+    19: "HEALTH: Healthcare Policy & Insurance",
+    20: "SOCIAL: Reproductive Rights & Abortion",
+    21: "FOREIGN POLICY: Latin America & Global Policy",
+    22: "POLICY: Violations & Bans",
+    23: "HEALTH: COVID-19 & Public Health",
+    24: "JUSTICE: Criminal Justice & Incarceration",
+    25: "JUSTICE: Gun Control & 2nd Amendment",
+    26: "JUSTICE: Policing & Law Enforcement",
+    27: "JUSTICE: Supreme Court & Legal Rulings",
+    28: "ECONOMY: Housing & Real Estate",
+    29: "POLITICS: State Governance & Education",
+    30: "SOCIAL: Student Debt & Higher Education",
+    31: "JUSTICE: Drug Policy & Legalization",
+    32: "NOISE: General Conversational Filler"
 }
 
 def setup_model():

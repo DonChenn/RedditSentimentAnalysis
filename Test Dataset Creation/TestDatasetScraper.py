@@ -83,5 +83,5 @@ if __name__ == "__main__":
     
     # Save to a single file
     df = pd.DataFrame(all_comments)
-    df.to_csv("raw_reddit_comments.csv", index=False)
+    df.to_csv("new_raw_reddit_comments.csv", index=False)
     print(f"\nSUCCESS: Scraped {len(df)} comments. Saved to 'raw_reddit_comments.csv'.")
