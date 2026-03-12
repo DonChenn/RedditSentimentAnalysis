@@ -2,207 +2,180 @@
 LABELING QUALITY REPORT
 ================================================================================
 
-Total samples processed: 2676
-Samples with disagreement: 149 (5.6%)
-Samples with quality issues: 34 (1.3%)
+Total samples processed: 5960
+Samples with disagreement: 135 (2.3%)
+Samples with quality issues: 30 (0.5%)
 
 Average Confidence Scores:
-  Emotion Confidence: 0.786
-  Topic Confidence: 0.759
-  Topic Agreement: 0.942
+  Emotion Confidence: 0.795
+  Topic Confidence: 0.782
+  Topic Agreement: 0.943
 
 Low Confidence Samples (for human review):
-  Total: 42
+  Total: 58
 
 ================================================================================
 QUALITY ISSUES FOUND:
 ================================================================================
 
-Row 1809: NEUTRAL_WITH_OTHERS
-  Text: Dan Crenshaw loses his primary to Steve Toth | Isn’t Crenshaw a RINO?
-  Emotions: ['neutral', 'curiosity']
-  Topic: 1
+Row 5119: NEUTRAL_WITH_OTHERS
+  Text: Sen. Mitt Romney says he will vote to convict on abuse of power | I'm happy that Romney is choosing the right side to vote to convict but it really doesn't matter cause I'm guessing if Trump wins reel
+  Emotions: ['joy', 'neutral']
+  Topic: 15
 
-Row 1830: NEUTRAL_WITH_OTHERS
-  Text: US strikes 1,700 Iranian targets in 72 hours, pace nearly doubles | Irans ballistic missiles are waning way faster than I thought it would. Plenty of little drones left though.
-  Emotions: ['surprise', 'neutral']
-  Topic: 6
+Row 5197: NEUTRAL_WITH_OTHERS
+  Text: This sub has been infiltrated by fake conservatives | What's your litmus test for "fake conservative?"
 
-Row 1831: CONFLICTING_EMOTIONS
-  Text: US strikes 1,700 Iranian targets in 72 hours, pace nearly doubles | Iran's navy is at the bottom of the sea.  
-Its air force is scrap metal.  
-Its radar network is blind and bleeding.  
-Trump just dro
-  Emotions: ['anger', 'disapproval', 'excitement']
-  Topic: 6
+One could argue Conservatism has been overrun by populists.
 
-Row 1848: NEUTRAL_WITH_OTHERS
-  Text: Trump exploring backing militias in Iran to topple weakened regime following strikes: reports | "History doesn't repeat itself, but it often rhymes"
-  Emotions: ['neutral', 'curiosity']
-  Topic: 6
+I say Conservatism is messy and the
+  Emotions: ['neutral', 'confusion']
+  Topic: 4
 
-Row 1864: NEUTRAL_WITH_OTHERS
-  Text: 3 hero Austin cops who stopped deadly bar shooting expected to be dragged before grand jury thanks to George Floyd-era policy | According to the article, Austin has a policy now of doing this with eve
-  Emotions: ['neutral', 'realization']
-  Topic: 26
-
-Row 1903: NEUTRAL_WITH_OTHERS
-  Text: Did This Democrat Darling Twitch Streamer Just Tell His Audience How to Commit Terror Attacks? | In the context within which he said this, nothing will happen. He commented on a foreign war and how th
-  Emotions: ['disapproval', 'neutral']
+Row 5276: NEUTRAL_WITH_OTHERS
+  Text: Elon Musk Advises People to Ditch Facebook and Use Signal | Upsides of Signal are the ability to use it on your desktop/laptop and text and call other Signal users. Other upsides are end-to-end encryp
+  Emotions: ['approval', 'neutral']
   Topic: 16
 
-Row 1925: NEUTRAL_WITH_OTHERS
-  Text: Israel bombs Iran’s top mullahs as they count votes for next supreme leader | News stories say his son won, so i guess they counted them somehow.
+Row 5280: NEUTRAL_WITH_OTHERS
+  Text: BREAKING: Donald Trump announces the JFK Files WILL be released TOMORROW | Anybody expecting there to be a CIA document or FBI document that says "there was definitely a second shooter" or "The CIA di
+  Emotions: ['disappointment', 'neutral']
+  Topic: 0
+
+Row 5290: NEUTRAL_WITH_OTHERS
+  Text: It is done. | US IPs will see Gulf of America. Mexican IPs will see Gulf of Mexico. Everyone else will see "Gulf of Mexico (Gulf of America)" 
+
+https://blog.google/products/maps/united-states-geograph
+  Emotions: ['curiosity', 'realization', 'neutral']
+  Topic: 7
+
+Row 5307: NEUTRAL_WITH_OTHERS
+  Text: FBI Says There Is ‘No Indication’ That Antifa Took Part in U.S. Capitol Riot | Also worth noting: "Intelligence analysts downplayed Chinese election influence to avoid supporting Trump policies, inspe
+  Emotions: ['neutral', 'disapproval']
+  Topic: 13
+
+Row 5311: NEUTRAL_WITH_OTHERS
+  Text: You Mean Like This? | “The study also determined that you can convince people of almost anything as long as you say that a study confirmed it. It also found that Showing highly biased or even faked st
+  Emotions: ['neutral', 'realization']
+  Topic: 13
+
+Row 5352: NEUTRAL_WITH_OTHERS
+  Text: Schiff: Roger Stone could face charges of lying to Congress | He's really going on about this on [twitter](https://twitter.com//RogerJStoneJr).
   Emotions: ['neutral', 'curiosity']
-  Topic: 6
+  Topic: 0
 
-Row 1926: NEUTRAL_WITH_OTHERS
-  Text: Israel bombs Iran’s top mullahs as they count votes for next supreme leader | Dang. They're unaliving all the murdering, rapist, oppressors and terrorists.
+Row 5388: CONFLICTING_EMOTIONS
+  Text: Biden to require nursing homes get staff vaccinated or lose federal funds | This is spectacular news. Our nursing staff vaccination rate is still hovering around 60% and the unvaccinated are also the 
+  Emotions: ['approval', 'joy', 'anger']
+  Topic: 19
 
-That's just terrible. /S
-  Emotions: ['disapproval', 'neutral']
-  Topic: 6
+Row 5389: CONFLICTING_EMOTIONS
+  Text: Biden to require nursing homes get staff vaccinated or lose federal funds | I am super pumped he is including this! My mom died in May of 2020 while in a nursing home, because EVERYONE had it. The sta
+  Emotions: ['excitement', 'sadness']
+  Topic: 19
 
-Row 1991: NEUTRAL_WITH_OTHERS
-  Text: Lesbian Navy Captain Faces Court Martial After $100M Ship Ran Aground, Caught Fire, Sank | 1. This is from 2024
-
-2.  This was the New Zealand military, not the U.S.
-  Emotions: ['neutral', 'realization']
-  Topic: -1
-
-Row 2070: NEUTRAL_WITH_OTHERS
-  Text: Nancy Pelosi Says the President Does NOT Need Congressional Approval to Bomb Another Country | Bill Clinton conducted a protracted air war in Kosovo without a declaration of war. Nancy knows that she 
-  Emotions: ['approval', 'neutral']
-  Topic: 6
-
-Row 2089: NEUTRAL_WITH_OTHERS
-  Text: The Iran Endgame — Donald Trump is sending contradictory signals about the point of Operation Epic Fury. The goal should be simple: Dismantle the IRGC. | The actions are what to pay attention to. A lo
-  Emotions: ['neutral', 'realization']
-  Topic: 6
-
-Row 2108: NEUTRAL_WITH_OTHERS
-  Text: US military blasts Iranian warship in new video, says regime has 'ZERO' left in Gulf of Oman | This is the second time The US Navy has sank the entire Iranian Navy.
-
-Operation Preying Mantis, after Th
-  Emotions: ['neutral', 'realization']
-  Topic: 6
-
-Row 2132: NEUTRAL_WITH_OTHERS
-  Text: Pelosi: He (Obama) "did not need authorization" to use force bombing Libya | It was (D)ifferent.
+Row 5420: NEUTRAL_WITH_OTHERS
+  Text: President Trump forced governors to flatter him and ask 'nicely' to get vital federal disaster aid, a new book says | Not sure why this is insightful? Anyone who was watching the news knew this was go
   Emotions: ['neutral', 'annoyance']
   Topic: 3
 
-Row 2170: NEUTRAL_WITH_OTHERS
-  Text: U.S. F-15s Crash in Kuwait Friendly Fire Amid Iran Conflict | How friendly is Kuwait, anyway?
+Row 5425: CONFLICTING_EMOTIONS
+  Text: Trump is actively working to undermine the Postal Service — and every major U.S. institution | I'm a Democrat and to all my liberal friends out there save your breath and your aggravation because the 
+  Emotions: ['anger', 'disapproval', 'optimism']
+  Topic: 1
 
-[BBC article on the incident](https://www.bbc.com/news/articles/c5y4v8gndz1o) for more info.
-  Emotions: ['neutral', 'curiosity']
-  Topic: 6
+Row 5495: CONFLICTING_EMOTIONS
+  Text: No, the Trump Tower meeting was not 'totally legal' | Trump has essentially thrown his son under the bus with his panic about Mueller and his own stupidity. I can't wait for Trump Jr. to return the fa
+  Emotions: ['disapproval', 'anger', 'excitement']
+  Topic: 5
 
-Row 2186: NEUTRAL_WITH_OTHERS
-  Text: 🚨Shocking explicit footage of the death of the Supreme Leader🚨 | well, at least we have proof.
-  Emotions: ['neutral', 'realization']
+Row 5497: NEUTRAL_WITH_OTHERS
+  Text: No, the Trump Tower meeting was not 'totally legal' | In other news the Pope is catholic and bears defecate in the woods. 
+  Emotions: ['amusement', 'neutral']
   Topic: -1
 
-Row 2240: NEUTRAL_WITH_OTHERS
-  Text: Liberation | Not sure if this is in Tehran or just another "mostly peaceful protest" in Oakland, Baltimore, St. Louis or Detroit. 
-  Emotions: ['neutral', 'annoyance']
-  Topic: 7
-
-Row 2283: CONFLICTING_EMOTIONS
-  Text: All over Iran people cheered on announcement of Khamenei death, Trump says | Anyone with common sense cheered. This terrorist killed 36000 people a month ago. He got what he deserved.
-  Emotions: ['approval', 'disgust', 'joy']
-  Topic: 6
-
-Row 2299: NEUTRAL_WITH_OTHERS
-  Text: American forces sink Iranian warship | Congrats.
-
-Not sure when the last time was that US forces sunk an enemy ship? I don't imagine this happens very often in recent wars.
-
-Meanwhile, BBC is reportin
-  Emotions: ['neutral', 'curiosity']
-  Topic: 6
-
-Row 2305: NEUTRAL_WITH_OTHERS
-  Text: EXCLUSIVE: Alleged IRGC private chat claims school strike was “unintentional mistake” to blame U.S. | Should be easy enough to examine the shrapnel and identify who made the rocket/bomb/whatever
-  Emotions: ['neutral', 'curiosity']
-  Topic: 6
-
-Row 2321: NEUTRAL_WITH_OTHERS
-  Text: The 50-Year War — America’s strikes against Iran are not the start of a fight, but the beginning of the end of one. | We first had fights and wars with the Barbary Pirates, the Barbary War under Jeffe
-  Emotions: ['neutral', 'realization']
-  Topic: 7
-
-Row 2343: NEUTRAL_WITH_OTHERS
-  Text: 3 US service members killed, 5 seriously wounded in Iran operation | From my understanding, it was a helo that malfunctioned and went down, not from an Iranian strike.  Still waiting official word.
-  Emotions: ['neutral', 'curiosity']
-  Topic: 6
-
-Row 2345: CONFLICTING_EMOTIONS
-  Text: 3 US service members killed, 5 seriously wounded in Iran operation | I was afraid, but prepared, when Trump said that our troops would be at risk. 
-Rest in piece and thanks you for your service. I hop
-  Emotions: ['fear', 'sadness', 'gratitude']
-  Topic: 6
-
-Row 2372: NEUTRAL_WITH_OTHERS
-  Text: Former Iranian President Ahmadinejad reportedly killed in Israeli strikes | Damn. I was looking forward to the Iranian version of the most wanted card deck to go along with my one from Iraq. Oh well.
-  Emotions: ['disappointment', 'neutral']
-  Topic: 6
-
-Row 2382: NEUTRAL_WITH_OTHERS
-  Text: The Iran Strike Is All About China | Of course it’s about China, and Russia to an extent.
-
-We can’t attack China or Russia directly without WWIII, so we weaken them by taking out the fuel and other re
-  Emotions: ['neutral', 'realization']
-  Topic: 6
-
-Row 2384: NEUTRAL_WITH_OTHERS
-  Text: The Iran Strike Is All About China | It's not all about China, but just like Venezuela it's a direct warning to China.  
-  Emotions: ['neutral', 'disapproval']
-  Topic: 6
-
-Row 2399: NEUTRAL_WITH_OTHERS
-  Text: Housing Secretary Scott Turner: 50% of everyone on subsidized housing stays there for more than 15 years | Who would leave discounted housing if they didn't have to?
-  Emotions: ['neutral', 'curiosity']
-  Topic: 28
-
-Row 2400: NEUTRAL_WITH_OTHERS
-  Text: Housing Secretary Scott Turner: 50% of everyone on subsidized housing stays there for more than 15 years | I have Section 8 tenants and they are generally amazing.  Payment is always on time or if the
+Row 5523: NEUTRAL_WITH_OTHERS
+  Text: Happy Birthday, America! | Nice set up. Have a safe night
   Emotions: ['approval', 'neutral']
-  Topic: 28
+  Topic: -1
 
-Row 2448: CONFLICTING_EMOTIONS
-  Text: Iran just stated that they are going to hit very hard today, harder than they have ever hit before. THEY BETTER NOT DO THAT, HOWEVER, BECAUSE IF THEY DO, WE WILL HIT THEM WITH A FORCE THAT HAS NEVER B
-  Emotions: ['annoyance', 'fear', 'optimism']
-  Topic: 6
+Row 5592: NEUTRAL_WITH_OTHERS
+  Text: Republicans do not represent Conservative values. | Conservatives and Libertarians, while sometimes aligned, are not the same thing
+  Emotions: ['neutral', 'realization']
+  Topic: 4
 
-Row 2533: NEUTRAL_WITH_OTHERS
-  Text: State Media Confirms Ali Khamenei Has Been Eliminated | He's facing judgement. Imagine his surprise.
-  Emotions: ['neutral', 'surprise']
-  Topic: 6
+Row 5611: NEUTRAL_WITH_OTHERS
+  Text: It is kinda true tho | I hate to be a party pooper but I also see a lot of leftists speaking up against child trafficking. Most people no matter their ideology are against that.
+  Emotions: ['disapproval', 'neutral']
+  Topic: 10
 
-Row 2551: NEUTRAL_WITH_OTHERS
-  Text: Khamenei killed in opening strike on Iran, Israel officials believe | Don’t think this has been verified. Seeing on X that he is expected to speak soon.
-  Emotions: ['neutral', 'curiosity']
-  Topic: 6
-
-Row 2552: NEUTRAL_WITH_OTHERS
-  Text: Khamenei killed in opening strike on Iran, Israel officials believe | ynetnews seems to be the only one reporting his death. I just looked up his name and am not seeing any major news sources stating 
-  Emotions: ['neutral', 'curiosity']
-  Topic: 6
-
-Row 2583: NEUTRAL_WITH_OTHERS
-  Text: Scouting America (fka Boy Scouts of America) and the DoW | I’m involved in Scouting, but don’t usually follow the national stuff so I hadn’t heard of this. Here’s some actual information for anyone el
-  Emotions: ['curiosity', 'neutral']
+Row 5627: CONFLICTING_EMOTIONS
+  Text: Jimmy Carter, 39th president and Nobel Peace Prize winner, dies at 100, his son says | The way I wish we could all go; an incredibly long life, and leaving this world surrounded by the people you love
+  Emotions: ['gratitude', 'sadness']
   Topic: 7
 
-Row 2638: NEUTRAL_WITH_OTHERS
-  Text: Hegseth bans military from attending Princeton, Columbia, other elite universities: 'Wokeness and weakness' | I know it was different times, but Ike was president of Columbia
+Row 5647: NEUTRAL_WITH_OTHERS
+  Text: Elon Musk: A lot of people are going to be super unhappy with West Coast high tech as the de facto arbiter of free speech | Well? Set up the competition then Elon.
   Emotions: ['neutral', 'curiosity']
-  Topic: 7
+  Topic: 16
 
-Row 2664: NEUTRAL_WITH_OTHERS
-  Text: Thomas Massie calls Iran attack a 'war of aggression' by the US | Remember last year when Schumer called Trump weak on Iran?
+Row 5660: NEUTRAL_WITH_OTHERS
+  Text: Trump Admits in Suit Against His Niece that the NY Times Story on His Taxes — Which He Previously Called ‘Fake News’ — Was Real | Who here's shocked?
+  Emotions: ['surprise', 'neutral']
+  Topic: 5
+
+Row 5671: NEUTRAL_WITH_OTHERS
+  Text: Trump should be impeached and removed for his threats against Greenland. | "Why is congress"
+
+You mean why are Republicans
   Emotions: ['neutral', 'annoyance']
-  Topic: 6
+  Topic: 3
+
+Row 5707: NEUTRAL_WITH_OTHERS
+  Text: A Republican Congressman’s Racism Is Finally Catching Up With Him | Doubt it
+  Emotions: ['disapproval', 'neutral']
+  Topic: 5
+
+Row 5761: NEUTRAL_WITH_OTHERS
+  Text: Trump says FBI raiding his Mar-a-Lago home | President Richard Nixon made an address to the American public from the Oval Office on August 8, 1974, to announce his resignation from the presidency due 
+  Emotions: ['curiosity', 'neutral']
+  Topic: 0
+
+Row 5764: NEUTRAL_WITH_OTHERS
+  Text: Lock him up! Why is repeat offender Donald Trump still a free man? | &gt;The fact he is not, and has not been charged with anything, is a genuine puzzle – some might say a scandal, even a conspiracy.
+
+  Emotions: ['disapproval', 'neutral']
+  Topic: 0
+
+Row 5770: NEUTRAL_WITH_OTHERS
+  Text: David Koch, billionaire conservative activist and philanthropist, dies at 79 | He funded that anti-climate science machine for decades.  I don't wish harm on anyone, but I definitely won't be mourning
+  Emotions: ['disapproval', 'neutral']
+  Topic: 14
+
+Row 5796: NEUTRAL_WITH_OTHERS
+  Text: Democratic super PAC jumps into Texas Senate race to boost Colin Allred | Is it too late, perhaps?
+  Emotions: ['neutral', 'curiosity']
+  Topic: 1
+
+Row 5838: NEUTRAL_WITH_OTHERS
+  Text: The Fairy-fucking-Godmother | I don't care at all about people who voted 3rd party.  Totally their right and they most likely wouldn't have voted Trump anyways (Jo is pretty out there and a wayyyy dif
+  Emotions: ['neutral', 'amusement', 'approval']
+  Topic: 1
+
+Row 5864: NEUTRAL_WITH_OTHERS
+  Text: Voter ID vs Vaccine Passports | I know they are cheap but maybe we could give state ids to all legal citizens so there is no money requirement for voting.
+  Emotions: ['approval', 'neutral']
+  Topic: 1
+
+Row 5941: CONFLICTING_EMOTIONS
+  Text: Cuomo resigns as New York governor | Yayyy we no longer have this specific pervert/murderer as a government official yaaayy.
+
+Our bar is so low.
+  Emotions: ['joy', 'disgust', 'disapproval']
+  Topic: 5
+
+Row 5959: NEUTRAL_WITH_OTHERS
+  Text: Conservative journalists who've closely covered Antifa violence say leftist militants were not behind Capitol siege | I don't think it was Antifa either. Clearly we have a lot of idiots on our side as
+  Emotions: ['disapproval', 'neutral']
+  Topic: 8
 

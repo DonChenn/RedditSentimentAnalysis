@@ -14,8 +14,8 @@ from collections import Counter
 load_dotenv()
 API_KEY = os.getenv("API_KEY")
 
-INPUT_FILE = 'Test Dataset Creation/new_raw_reddit_comments.csv'
-OUTPUT_FILE = 'Test Dataset Creation/combined_BERT_labeled_reddit_comments.csv'
+INPUT_FILE = 'Test Dataset Creation/combined_all_reddit_comments.csv'
+OUTPUT_FILE = 'Test Dataset Creation/last_combined_all_reddit_comments.csv'
 DISAGREEMENT_FILE = 'Test Dataset Creation/disagreement_log.csv'
 QUALITY_REPORT_FILE = 'Test Dataset Creation/quality_report.txt'
 
@@ -330,34 +330,26 @@ def main():
         print(f"Missing input file: {INPUT_FILE}")
         return
 
-    # IMPROVED: Process all samples (removed .head(10))
-    df = pd.read_csv(INPUT_FILE)
-    df["row_id"] = df.index
+    read_file = OUTPUT_FILE if os.path.exists(OUTPUT_FILE) else INPUT_FILE
+    df = pd.read_csv(read_file)
+    print(f"📊 Total rows loaded: {len(df)} (from {read_file})")
 
-    print(f"📊 Total samples to process: {len(df)}")
+    # Ensure all label columns exist
+    for col in ["row_id", "predicted_emotion", "predicted_topic",
+                "emotion_confidence", "topic_confidence", "topic_agreement"]:
+        if col not in df.columns:
+            df[col] = None
 
-    # Resume from existing file if available
-    if os.path.exists(OUTPUT_FILE):
-        existing = pd.read_csv(OUTPUT_FILE)
-        # Only merge columns that exist in the existing file
-        merge_cols = ["row_id", "predicted_emotion", "predicted_topic"]
-        for col in ["emotion_confidence", "topic_confidence", "topic_agreement"]:
-            if col in existing.columns:
-                merge_cols.append(col)
-        df = df.merge(existing[merge_cols], on="row_id", how="left")
-        # Ensure all expected columns are present
-        for col in ["predicted_emotion", "predicted_topic",
-                    "emotion_confidence", "topic_confidence", "topic_agreement"]:
-            if col not in df.columns:
-                df[col] = None
-        already_done = df["predicted_emotion"].notna().sum()
-        print(f"📋 Resuming: {already_done} samples already labeled")
-    else:
-        df["predicted_emotion"] = None
-        df["predicted_topic"] = None
-        df["emotion_confidence"] = None
-        df["topic_confidence"] = None
-        df["topic_agreement"] = None
+    # Assign row_ids to any rows that don't have one yet
+    max_existing_id = df["row_id"].dropna().max()
+    next_id = int(max_existing_id) + 1 if pd.notna(max_existing_id) else 0
+    missing_mask = df["row_id"].isna()
+    df.loc[missing_mask, "row_id"] = range(next_id, next_id + missing_mask.sum())
+    df["row_id"] = df["row_id"].astype(int)
+
+    already_done = df["predicted_emotion"].notna().sum()
+    unlabeled = df["predicted_emotion"].isna().sum()
+    print(f"📋 Already labeled: {already_done} | To label: {unlabeled}")
 
     client, config = setup_model()
     save_counter = 0
