@@ -42,7 +42,12 @@ Code written by team:
         Pipeline script that combines Liberal vs Conservative dataset (title + body text) and 1 million reddit comments (25,000 r/politics subreddit)
         (44 lines)
 
-    Sentiment model training: GoEmotionsRoBERTa.ipynb, GoEmotionsImprovedRoBERTa.ipynb, GoEmotionsCNN.ipynb, GoEmotionsVADER.ipynb, GoEmotionsFewShot.ipynb (each around 250 lines)
+    Sentiment model training: 
+        GoEmotionsRoBERTa.ipynb: RoBERTa model trained on learning rate of 5e-5, 4 epochs, no warmup, linear class weights, weighted f1 (448 lines)
+        GoEmotionsImprovedRoBERTa.ipynb: RoBERTa model trained on learning rate of 3e-5, 6 epochs, 0.1 warmup, sqrt class weights, macro f1 (171 lines)
+        GoEmotionsCNN.ipynb: CNN sentiment model trained on GoEmotions dataset (425 lines)
+        GoEmotionsVADER.ipynb: VADER baseline model (154 lines)
+        GoEmotionsFewShot.ipynb: Gemini Few Shot baseline model (243 lines)
 
     TestDatasetScraper.py: Reddit API scraper that collects comments from political subreddits for final evaluation. (~86 lines)
 
