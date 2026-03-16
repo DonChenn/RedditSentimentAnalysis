@@ -19,12 +19,15 @@ External Libraries:
     kagglehub (https://pypi.org/project/kagglehub/)
     google-genai>=0.1.0 (https://pypi.org/project/google-genai/)
     dotenv (https://pypi.org/project/python-dotenv/) 
+    UMAP (https://umap-learn.readthedocs.io/en/latest/api.html)
 
 Publicly available code:
 
     VADER sentiment library (vaderSentiment). Used for baseline inference                      
-    BERTopic library. Used for baseline inference 
-    NMF (Non-Negative Matrix Factorization) library. Used for baseline inference
+    BERTopic library. (https://maartengr.github.io/BERTopic/algorithm/algorithm.html): Used for baseline inference 
+    NMF (Non-Negative Matrix Factorization) library (https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.NMF.html): 
+    Used for baseline inference
+    UMAP (https://umap-learn.readthedocs.io/en/latest/api.html): Used for baseline inference
 
 
 Code written by team:
