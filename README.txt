@@ -23,7 +23,8 @@ External Libraries:
 Publicly available code:
 
     VADER sentiment library (vaderSentiment). Used for baseline inference                      
-
+    BERTopic library. Used for baseline inference 
+    NMF (Non-Negative Matrix Factorization) library. Used for baseline inference
 
 
 Code written by team:
