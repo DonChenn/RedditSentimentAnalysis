@@ -1,20 +1,28 @@
 External Libraries:
-    pandas (https://pandas.pydata.org/)
-    scikit-learn (https://scikit-learn.org/stable/)
-    bertopic (https://maartengr.github.io/BERTopic/index.html)
-    umap (https://pypi.org/project/umap-learn/)
-    os (https://docs.python.org/3/library/os.html)
-    sys (https://docs.python.org/3/library/sys.html)
-    pickle (https://docs.python.org/3/library/pickle.html)
-    kagglehub (https://github.com/Kaggle/kagglehub)
-
-
-
-
+    pandas (https://pypi.org/project/pandas/)
+    numpy (https://pypi.org/project/numpy/)
+    scikit-learn (https://pypi.org/project/scikit-learn/)
+    requests (https://pypi.org/project/requests/)
+    nltk (https://pypi.org/project/nltk/)
+    vaderSentiment (https://pypi.org/project/vaderSentiment/)
+    torch (https://pypi.org/project/torch/)
+    torchvision (https://pypi.org/project/torchvision/)
+    torchaudio (https://pypi.org/project/torchaudio/)
+    transformers (https://pypi.org/project/transformers/)
+    accelerate>=1.1.0 (https://pypi.org/project/accelerate/)
+    datasets (https://pypi.org/project/datasets/)
+    bertopic (https://pypi.org/project/bertopic/)
+    gensim (https://pypi.org/project/gensim/)
+    matplotlib (https://pypi.org/project/matplotlib/)
+    seaborn (https://pypi.org/project/seaborn/)
+    tqdm (https://pypi.org/project/tqdm/)
+    kagglehub (https://pypi.org/project/kagglehub/)
+    google-genai>=0.1.0 (https://pypi.org/project/google-genai/)
+    dotenv (https://pypi.org/project/python-dotenv/) 
 
 Publicly available code:
 
-
+    VADER sentiment library (vaderSentiment). Used for baseline inference                      
 
 
 
@@ -33,4 +41,12 @@ Code written by team:
     Topic Classifier Model/combinedtrainingdataset.py
         Pipeline script that combines Liberal vs Conservative dataset (title + body text) and 1 million reddit comments (25,000 r/politics subreddit)
         (44 lines)
+
+    Sentiment model training: GoEmotionsRoBERTa.ipynb, GoEmotionsImprovedRoBERTa.ipynb, GoEmotionsCNN.ipynb, GoEmotionsVADER.ipynb, GoEmotionsFewShot.ipynb
+
+    TestDatasetScraper.py: Reddit API scraper that collects comments from political subreddits for final evaluation. (~86 lines)
+
+    LLM_labeling_improved.py: Gemini 2.0 Flash labeling pipeline that assigns GoEmotions and topic labels to scraped Reddit comments to construct the test dataset. (~462 lines)
+
+    AdvancedIntegratedPipeline.ipynb: Pipeline for all three advanced models on our test evaluation dataset (~700 lines)
 
