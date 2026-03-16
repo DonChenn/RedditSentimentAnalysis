@@ -42,8 +42,3 @@ if csv_file_2:
 
 if not cons_vs_lib.empty and not politics_sub.empty:
     combined_data = pd.concat([cons_vs_lib, politics_sub], ignore_index=True)
-
-    print(f"Successfully combined!")
-    print(f"Dataset 1 rows: {len(cons_vs_lib)}")
-    print(f"Dataset 2 ('politics' only) rows: {len(politics_sub)}")
-    print(f"Total combined rows: {len(combined_data)}")
